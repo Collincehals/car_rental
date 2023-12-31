@@ -1,0 +1,348 @@
+{% extends 'a_main/base.html' %}
+{% block title_head %} About {% endblock title_head %}
+{% load static %}
+
+{% block layout %}
+<style>
+  .about-hero-wrap {
+    background-image: url("{% static 'images/bg_3.jpg' %}");
+    height:100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .about-bg2 {
+    background-image: url("{% static 'images/bg_3.jpg' %}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    z-index: 20;
+    margin-top:7rem;
+    margin-left: 5rem;
+    margin-bottom:7rem;
+    margin-right: -10rem;
+  }
+  .about-bg3 {
+    background-image: url("{% static 'images/bg_3.jpg' %}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: top;
+    z-index: 5;
+    position: relative;
+    margin-left:2rem;
+  }
+ .heading-section-wordings {
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    color:var(--whiteColor);
+    z-index: 2;
+	}
+	.heading-section-wordings>h2 {
+    font-size:4rem;
+    font-weight:600;
+    padding-bottom: 2rem;
+	}
+  @media (max-width: 768px) {
+    .about-bg2 {
+      display:none;
+    }
+    .about-bg3 {
+      margin-left:0;
+    }
+    .heading-section-wordings>h2 {
+      font-size:2.5rem;
+      font-weight:600;
+      padding-bottom: 2rem;
+    }
+  }
+
+</style>
+    <section class="about-hero-wrap" >
+      <div class="breadcrumb-animate">
+        <p class="breadcrumbs"><span class="home-page"><a href="{% url 'home' %}">Home <i class="fa-solid fa-chevron-right chevron"></i></a></span> <span>About us<i class="fa-solid fa-chevron-right chevron"></i></span></p>
+        <h1 class="bread">About Us</h1>
+      </div>
+    </section>
+
+    <section class="ftco-section ftco-about">
+				<div class="about-section">
+            <div class="about-bg2">
+            </div>
+	          <div class="about-paragraph-section">
+                <span class="subheading">About us</span>
+                <h2 class="heading">Welcome to Carbook</h2>
+
+                <p>Welcome to [Firm Name], a leading civil engineering consultancy firm based in Kenya, dedicated to delivering innovative and reliable civil and geotechnical solutions.
+
+                  At [Firm Name], we combine our expertise with a passion for excellence to provide top-tier services in civil engineering, offering tailored solutions for a wide array of projects. Our team comprises highly skilled and experienced professionals committed to delivering superior results, meeting the most demanding challenges in the industry.
+                  
+                  We specialize in a diverse range of civil engineering services including site investigations, structural design, project management, foundation analysis, environmental assessments, and much more. Our comprehensive approach ensures that each project is handled with precision and efficiency, meeting the unique needs and specifications of our clients.
+                  
+                  Driven by a commitment to quality and sustainability, we strive to exceed expectations in every project we undertake. Our dedication to innovation and continuous improvement sets us apart, enabling us to deliver cutting-edge solutions that stand the test of time.
+                  </p>
+                <a href="#" class="button">Search Service</a>
+	          </div>
+			
+				</div>
+		</section>
+
+		<section class="about-intro-section">
+			  <div class="color-blank-container">
+				</div>
+        <div class="about-bg3">
+          <div class="heading-section-wordings">
+            <h2>Do You Want To Earn With Us? So Don't Be Late.</h2>
+            <a href="#" class="button">Become A Driver</a>
+          </div>
+        </div>
+		</section>
+<style>
+  .testimonial-header .subheading {
+    font-size:1.6rem;
+    font-weight:600;
+    text-transform: uppercase;
+    padding:1rem;
+    text-align: center;
+    color:var(--blueColor);
+  }
+
+  .testimonial-header .heading {
+    font-size:4rem;
+    text-align: center;
+    color:var(--blackColor);
+    opacity:80%;
+    padding-bottom: 3rem;
+  }
+  .testimonial-row {
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:2rem;
+    justify-content: center;
+    align-items: center;
+  }
+  .testimony-wrap {
+    padding:3rem;
+    text-align: center;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e9ecef;
+    border-radius: .5rem;
+    box-shadow: var(--boxshadow);
+  }
+  .testimony-img-container {
+    width:10rem;
+    height:10rem; 
+    margin-bottom: 2rem;
+  }
+
+  .testimony-img-container .carousel-img {
+    width:100%;
+    border-radius: 50%;
+  }
+
+  .testimony-body {
+    line-height: 3rem;
+    font-size:1.7rem;
+    text-align: center;
+    color:var(--blackColor);
+    
+  }
+  .testimony-body .testimonial-words {
+    color:gray;
+    font-size:1.7rem;
+    padding-bottom:1rem;
+  }
+
+  .testimony-body .name {
+    line-height: 3rem;
+    font-size:1.8rem;
+    color:var(--blackColor);
+  }
+  .testimony-body .position {
+    line-height: 3rem;
+    font-size:1.6rem;
+    color:var(--blueColor);
+  }
+  .mySwiper .swiper-button-next, .mySwiper .swiper-button-prev {
+    color:var(--blueColor);
+    font-size: 1.4rem;
+    width:1.6rem;
+    height:1.6rem;
+  }
+  
+/*Counter styling here */
+.counter-container-row {
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:4rem;
+    justify-content: center;
+    align-items: center;
+  }
+.counter-4,.counter-1,.counter-2,.counter-3 {
+  background: rgba(241, 240, 255,0.9);
+  padding-top:8rem;
+  padding-bottom:8rem;
+}
+.counter-items {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: center;
+  align-items: center;
+  gap:1.5rem;
+  font-size:2rem;
+}
+.counter-items .number {
+  font-size:4.2rem;
+  color:var(--blueColor);
+}
+.counter-items span {
+  font-size:1.7rem;
+  color:var(--blackColor);
+}
+@media (max-width: 768px) {
+  .counter-container-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap:1rem;
+  }
+  .counter-4,.counter-1,.counter-2,.counter-3 {
+    padding-top:5rem;
+    padding-bottom:5rem;
+}
+}
+@media (max-width: 600px) {
+  .counter-container-row {
+    grid-template-columns: 100%;
+    gap:1rem;
+  }
+  .counter-4,.counter-1,.counter-2,.counter-3 {
+    padding-top:5rem;
+    padding-bottom:5rem;
+}
+}
+/*Counter styling ENDS here */
+  
+</style>
+
+    <section class="ftco-section testimony-section bg-light">
+      <div class="container">
+        <div class="testimonial-header">
+          	<p class="subheading">Testimonial</p>
+            <h2 class="heading">Happy Clients</h2>
+        </div>
+        <div class="testimonial-row swiper mySwiper">
+          <div class="swiper-wrapper">
+              <div class="carousel-item swiper-slide">
+                <div class="testimony-wrap">
+                  <div class="testimony-img-container">
+                    <img src="{% static 'images/person_2.jpg' %}" alt="img-1" class="carousel-img" >
+                  </div>
+                  <div class="testimony-body">
+                    <p class="testimonial-words">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <p class="name">Roger Scott</p>
+                    <span class="position">Marketing Manager</span>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item swiper-slide">
+                <div class="testimony-wrap">
+                  <div class="testimony-img-container">
+                    <img src="{% static 'images/person_3.jpg' %}" alt="img-1" class="carousel-img" >
+                  </div>
+                  <div class="testimony-body">
+                    <p class="testimonial-words">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <p class="name">Roger Scott</p>
+                    <span class="position">Interface Designer</span>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item swiper-slide">
+                <div class="testimony-wrap">
+                  <div class="testimony-img-container">
+                    <img src="{% static 'images/person_4.jpg' %}" alt="img-1" class="carousel-img" >
+                  </div>
+                  <div class="testimony-body">
+                    <p class="testimonial-words">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <p class="name">Roger Scott</p>
+                    <span class="position">UI Designer</span>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item swiper-slide">
+                <div class="testimony-wrap">
+                  <div class="testimony-img-container">
+                    <img src="{% static 'images/person_1.jpg' %}" alt="img-1" class="carousel-img" >
+                  </div>
+                  <div class="testimony-body">
+                    <p class="testimonial-words">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <p class="name">Roger Scott</p>
+                    <span class="position">Web Developer</span>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item swiper-slide">
+                <div class="testimony-wrap">
+                  <div class="testimony-img-container">
+                    <img src="{% static 'images/person_3.jpg' %}" alt="img-1" class="carousel-img" >
+                  </div>
+                  <div class="testimony-body">
+                    <p class="testimonial-words">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <p class="name">Roger Scott</p>
+                    <span class="position">System Analyst</span>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="ftco-counter">
+    	<div class="container">
+    		<div class="counter-container-row">
+          <div class="counter-1">
+            <div class="block-18">
+              <div class="counter-items">
+                <strong class="number" data-number="60">60</strong>
+                <span>Year <br>Experienced</span>
+              </div>
+            </div>
+          </div>
+          <div class="counter-2">
+            <div class="block-18">
+              <div class="counter-items">
+                <strong class="number" data-number="1090">1090</strong>
+                <span>Total <br>Cars</span>
+              </div>
+            </div>
+          </div>
+          <div class="counter-3">
+            <div class="block-18">
+              <div class="counter-items">
+                <strong class="number" data-number="2590">2590</strong>
+                <span>Happy <br>Customers</span>
+              </div>
+            </div>
+          </div>
+          <div class="counter-4">
+            <div class="block-18">
+              <div class="counter-items">
+                <strong class="number" data-number="67">67</strong>
+                <span>Total <br>Branches</span>
+              </div>
+            </div>
+          </div>
+        </div>
+    	</div>
+    </section>	
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- Initialize Swiper -->
+  <script src="{% static 'js/swiper.js' %}"></script>
+{% endblock layout %}

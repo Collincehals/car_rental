@@ -1,0 +1,284 @@
+{% load static %}
+<style> 
+ * {
+  box-sizing:border-box;
+  transition: all .3s linear;
+  margin:0;
+  padding:0;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  list-style-type:none;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 10px;
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+
+:root {
+  --whiteColor: #ffffff;
+  --redColor: #d40505;
+  --greenColor: #01D28E;
+  --blackColor: rgba(0, 0, 0, 1);
+  --blueColor:rgb(49, 49, 255);
+  --boxShadow: 0px 5px 5px 0px rgba(0,0,0,0.2);
+}
+ 
+.header {
+    position:absolute;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    top:0;
+    left:0;
+    width:100%;
+    padding:2.5rem;
+    z-index: 600;
+
+  }
+
+/* sticky header */
+  .header.sticky {
+    position:sticky;
+    display:flex;
+    justify-content: space-between;
+    background-color: var(--whiteColor);
+    box-shadow: var(--boxShadow);
+    color:var(--blackColor);
+    align-items: center;
+    top:0;
+    left:0;
+    width:100%;
+    padding:2.5rem;
+    z-index: 500;
+
+  }
+  .header.sticky .nav ul li a {
+    color:var(--blackColor);
+  }
+  .header.sticky .navbar-brand {
+    color:var(--blackColor);
+  }
+
+  .header.sticky .nav .nav-item.active a{
+    color:var(--greenColor);
+  }
+/* End sticky header */
+
+/* Nav styling */
+  .nav ul {
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap:.5rem;
+  }
+  
+  .nav ul li a {
+    color:var(--whiteColor);
+    font-size: 1.7rem;
+    padding-top:3rem;
+    padding-bottom:3rem;
+    padding-right:3rem;
+  }
+  .nav .nav-item.active a{
+    color:var(--greenColor);
+  }
+
+  .nav ul li a:hover {
+    color:var(--greenColor);
+  }
+
+  .navbar-brand {
+    color:var(--whiteColor);
+    font-size:2.0rem;
+    font-weight:600;
+  }
+  .navbar-brand1 {
+    color:var(--greenColor);
+    font-size:2rem;
+    padding-left:1rem;
+  }
+
+  .menubars, .menuclosebtn {
+    display:none;
+  }
+  .dropdown {
+    position: relative;
+  }
+  .dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 250px;
+    padding:2rem;
+    box-shadow: var(--boxShadow);
+    z-index: 1;
+  }
+  .dropdown-content .dropdown-menu a {
+    color:darkblue;
+    display:block;
+    font-size:1.6rem;
+    text-decoration:none;
+    padding:1rem;
+  }
+.drop-down-icon {
+  color:white;font-size:1.3rem;
+  padding-left:.5rem;
+  vertical-align: middle;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+    top:3rem;
+    
+  }
+  
+  @media(max-width:768px) {
+    .menubars {
+    display:block;
+    font-size:2rem;
+    color:var(--whiteColor);
+  }
+  /*drop-down-menu */
+  .dropdown .dropdown-content {
+    position: relative;
+    width: 100%;
+    padding:1rem;
+  }
+  .dropdown-content .dropdown-menu a {
+    font-size:1.4rem;
+    padding:.5rem;
+  }
+/*drop-down-menu */
+
+  .menuclosebtn {
+    display:block;
+    position: absolute;
+    top:2rem;
+    right:2rem;
+    z-index: 800;
+    font-size:2rem;
+    color:var(--whiteColor);
+  }
+
+  .nav ul {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .nav ul li {
+    color:var(--whiteColor);
+    font-size: 1.7rem;
+    padding:1rem;
+  }
+  .dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: auto;
+    height: auto;
+    padding:.5rem;
+    box-shadow: var(--boxShadow);
+    z-index: 1;
+  }
+  .dropdown-content .dropdown-menu a {
+    color:darkblue;
+    display:block;
+    font-size:1.4rem;
+    text-decoration:none;
+  }
+  .header {
+    position:sticky;
+    background-color: var(--blackColor);
+    padding:2rem;
+  }
+  .nav {
+    position:fixed;
+    left:0;
+    top:-50%;
+    width:100%;
+    padding-top:5rem;
+    background-color: var(--blackColor);
+    height:100vh;
+    clip-path:polygon(0 0, 0 0, 0 0, 0 0);
+  }
+  .nav.active {
+    top:0;
+    clip-path: none;
+  }
+
+  /* sticky header */
+  .header.sticky {
+    color:var(--blackColor);
+  }
+  .header.sticky .nav ul li a {
+    color:var(--whiteColor);
+  }
+  .header.sticky .menubars {
+    color:var(--blackColor);
+  }
+/* End sticky header */
+
+  }
+</style>
+
+<header class="header">
+  <div class="logo-container" style="display:flex; align-items:center; justify-content:flex-start; gap:1rem;">
+    <img class="logo-img" style="width:8rem;" src="{% static 'images/car-logo.png' %}">
+    <a class="navbar-brand" href="{% url 'home' %}">CAR<span class="navbar-brand1">RENTAL</span></a>
+  </div>
+    
+    <nav class="nav" id="mobilenav">
+      <ul>
+        <i class="fa-solid fa-xmark menuclosebtn" ></i>  
+        <li class="nav-item active"><a href="{% url 'home' %}">Home</a></li>
+        <li class="nav-item"><a href="{% url 'about' %}">About</a></li>
+        <li class="nav-item dropdown"><a>Products</a>
+          <ul class="dropdown-content">
+            <li class="dropdown-menu"><a href="">Portfolio</a></li>
+            <li class="dropdown-menu"><a href="">Our Service Charter</a></li>
+            <li class="dropdown-menu"><a href="">Our Vision</a></li>
+            <li class="dropdown-menu"><a href="">Our Mission</a></li>
+            <li class="dropdown-menu"><a href="">Core Values</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a href="{% url 'services' %}" >Services</a></li>
+        <li class="nav-item"><a href="{% url 'pricing' %}">Pricing</a></li>
+        
+        <li class="nav-item"><a href="{% url 'blog' %}" class="nav-link">Blog</a></li>
+        <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+        <!--
+        <li class="nav-item"><a href="{% url 'projects' %}" class="nav-link">Projects</a></li>
+        <li class="nav-item"><a href="{% url 'careers' %}" class="nav-link">Careers</a></li>-->
+      </ul>
+    </nav>
+    <i class="fa-solid fa-bars menubars" ></i>
+</header>
+
+<script>
+  document.querySelector('.menubars').addEventListener('click', function() {
+    document.getElementById('mobilenav').classList.toggle('active');
+  });
+
+  document.querySelector('.menuclosebtn').addEventListener('click', function() {
+    document.getElementById('mobilenav').classList.remove('active');
+  });
+
+  window.addEventListener('scroll', function() {
+    document.getElementById('mobilenav').classList.remove('active');
+  });
+
+const scrollOffset = 200;
+window.addEventListener('scroll', function() {
+  const header = document.querySelector('.header');
+
+  if (window.scrollY>scrollOffset) {
+    header.classList.add('sticky')
+  }else {
+    header.classList.remove('sticky')
+  }
+});
+</script>

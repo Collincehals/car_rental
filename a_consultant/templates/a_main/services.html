@@ -1,0 +1,178 @@
+{% extends 'a_main/base.html' %}
+{% block title_head %} Services {% endblock title_head %}
+{% load static %}
+
+{% block layout %}
+<style>
+	.services-hero-wrap {
+	 background-image: url("{% static 'images/bg_3.jpg' %}");
+	 position: relative; 
+	 background-size: cover;
+	 background-repeat: no-repeat;
+	 height: 100vh;
+   }
+   .services-bg3 {
+    background-image: url("{% static 'images/car-10.jpg' %}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    z-index: 5;
+    position: relative;
+    margin-left:2rem;
+  }
+  .services-headline-container {
+	padding:2rem;
+	text-align: center;
+  }
+  .services-headline-container .sub-headline {
+	font-size:1.7rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	color:var(--blueColor);
+	text-align: center;
+	padding:1rem;
+  }
+  .services-headline-container .services-headline {
+	font-size:4rem;
+	color:var(--blackColor);
+	text-align: center;
+	padding:1rem;
+  }
+  .services-container {
+	display:grid;
+	grid-template-columns: repeat(4, 1fr);
+	padding:2rem;
+	gap:3rem;
+	text-align: center;
+	color:rgb(49, 49, 49);
+  }
+  .services-container .services_body h3 {
+	color:var(--blackColor);
+	font-size: 2.4rem;
+  }
+  .services-container .services_body p {
+	color:rgb(88, 87, 87);
+	font-size: 1.7rem;
+	padding:1rem;
+	line-height:2.7rem;
+  }
+  .service_1, .service_2, .service_3, .service_4 {
+	background-color: rgba(241,240,253,0.9);
+	border:.01rem solid #ccc;
+	padding:2rem;
+	border-radius: .8rem;
+  }
+  .service_1:hover, .service_2:hover, 
+  .service_3:hover, .service_4:hover {
+	background-color: var(--greenColor);
+	color:var(--whiteColor);
+	cursor:pointer;
+	box-shadow:0 8px 8px 1px rgba(255, 255, 255, 0.7);
+  }
+  .service_1:hover .services_body p, 
+  .service_2:hover .services_body p, 
+  .service_3:hover .services_body p, 
+  .service_4:hover .services_body p {
+	color:var(--whiteColor);
+  }
+  .services-intro-section {
+	position: relative;
+	display: grid;
+	grid-template-columns: 2fr 4fr;
+	position:relative;
+	font-size:1.7rem;
+	background:var(--greenColor);
+	height:35rem;
+	}
+	.heading-section-wordings {
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%, -50%);
+	color:var(--whiteColor);
+	z-index: 2;
+	}
+	.heading-section-wordings>h2 {
+	font-size:4rem;
+	font-weight:600;
+	padding-bottom: 2rem;
+	}
+  @media(max-width:768px) {
+	.services-container {
+		grid-template-columns: 1fr;
+		padding:0rem;
+		gap:1rem;
+	}
+	.color-blank-container {
+		display:none;
+	}
+	.services-bg3 {
+		margin-left:0rem;
+  	}
+	 .services-intro-section {
+		grid-template-columns: 1fr;
+		height:40rem;
+	}
+	.heading-section-wordings>h2 {
+		font-size:2.5rem;
+		font-weight:600;
+		padding-bottom: 2rem;
+	}
+}
+</style>
+    <section class="services-hero-wrap" >
+          <div class="breadcrumb-animate">
+          	<p class="breadcrumbs"><span class="home-page"><a href="{% url 'home' %}">Home <i class="fa-solid fa-chevron-right chevron"></i></a></span> <span>Services <i class="fa-solid fa-chevron-right chevron"></i></span></p>
+            <h1 class="bread">Our Services</h1>
+          </div>
+    </section>
+
+    <section class="ftco-section">
+		<div class="container">
+			<div class="services-headline-container">
+					<span class="sub-headline">Services</span>
+					<h2 class="services-headline">Our Latest Services</h2>
+        	</div>
+			<div class="services-container">
+				<div class="service_1">
+					<i class="fa-solid fa-route" style="padding:4rem;margin-bottom:1.4rem; background:var(--greenColor);border-radius:50%;color:var(--whiteColor);font-size:3rem"></i>
+					<div class="services_body">
+						<h3 >Wedding Ceremony</h3>
+						<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+					</div>
+				</div>
+				<div class="service_2">
+					<i class="fa-solid fa-route" style="padding:4rem;margin-bottom:1.4rem; background:var(--greenColor);border-radius:50%;color:var(--whiteColor);font-size:3rem"></i>
+					<div class="services_body">
+						<h3 >City Transfer</h3>
+						<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+					</div>
+				</div>
+				<div class="service_3">
+					<i class="fa-solid fa-route" style="padding:4rem;margin-bottom:1.4rem; background:var(--greenColor);border-radius:50%;color:var(--whiteColor);font-size:3rem"></i>
+					<div class="services_body">
+						<h3 >Airport Transfer</h3>
+						<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+					</div>
+				</div>
+				<div class="service_4">
+					<i class="fa-solid fa-route" style="padding:4rem;margin-bottom:1.4rem; background:var(--greenColor);border-radius:50%;color:var(--whiteColor);font-size:3rem"></i>
+					<div class="services_body">
+						<h3 >Whole City Tour</h3>
+						<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+					</div>
+				</div>
+				</div>
+			</div>
+		</section>
+		
+		<section class="services-intro-section">
+			<div class="color-blank-container"></div>
+			<div class="services-bg3">
+				<div class="heading-section-wordings">
+					<h2>Do You Want To Earn With Us? So Don't Be Late.</h2>
+					<a href="#" class="button">Become A Driver</a>
+				</div>
+			</div>
+	  </section>
+{% endblock %}

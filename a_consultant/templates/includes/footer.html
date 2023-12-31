@@ -1,0 +1,179 @@
+{% load static %}
+
+<style>
+  * {
+  box-sizing:border-box;
+  transition: all .3s linear;
+  margin:0;
+  padding:0;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  list-style-type:none;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 10px;
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+
+:root {
+  --whiteColor: #ffffff;
+  --redColor: #d40505;
+  --greenColor: #01D28E;
+  --blackColor: rgba(0, 0, 0, 1);
+  --blueColor:rgb(49, 49, 255);
+  --bluevarColor:rgb(74, 74, 237);
+  --boxShadow: 0px 5px 5px 0px rgba(0,0,0,0.2);
+}
+
+  .footer {
+    background:black;
+    color:white;
+  }
+
+  .footer-container {
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    padding:3rem;
+    padding-top: 9rem;
+    bottom:0;
+    left:0;
+    width:100%;
+    background:var(--blackColor);
+    color:white;
+    border-bottom: .01rem solid #ccc;
+  }
+
+  .footer-content {
+    color:white;
+    font-size: 1.8rem;
+  }
+  .footer-content ul li  {
+    padding:1.2rem;
+  }
+  .footer-content ul li a {
+    text-decoration: none;
+    color:white;
+    font-size: 1.6rem;
+  }
+  .footer-content ul li a:hover {
+    color:var(--greenColor);
+    text-decoration: underline;
+  }
+  .footer-logo-title  {
+    color:white;
+  }
+  .footer-logo-title2 {
+    color:var(--greenColor);
+
+  }
+  .ftco-heading-2 {
+    padding:1rem;
+    font-size: 2.3rem;
+  }
+
+  .footer-content> p {
+    color:#ffffff;
+    font-size: 1.6rem;
+    line-height: 2.5rem;
+    padding-left:1rem;
+    padding-bottom: 4rem;
+  }
+
+  .footer-copyright {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:white;
+    font-size: 1.6rem;
+    padding:6rem;
+   
+  }
+  .footer-icons {
+    display:flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: end;
+    gap:.2rem;
+  }
+
+  .ft-icon {
+    padding:1.2rem;
+    border-radius: 50%;
+    background-color: rgba(66, 63, 63, 0.3);  
+    font-size:2rem;
+  }
+
+  .ft-com-icon {
+    padding-right:1rem;
+    color:white;
+  }
+
+  .ft-icon:hover {
+    background-color: var(--greenColor);  
+  }
+
+  .copyright-mark {
+    color:rgb(4, 185, 128);
+  }
+
+  .text {
+    font-size:1.6rem;
+    padding-left:.5rem;
+  }
+  @media (max-width:768px) {
+    .footer-container {
+    grid-template-columns: 100%;
+  }
+
+  }
+</style>
+
+<footer class="footer">
+  <div class="footer-container">
+      <div class="footer-content">
+        <h2 class="ftco-heading-2" ><a href="#" class="footer-logo-title">CAR<span class="footer-logo-title2"><br>RENTALS</span></a></h2>
+        <p>Where you access all your car needs</p>
+        <ul class="footer-icons">
+          <li><a href="#"><i class="ft-icon fa-brands fa-x-twitter" style="color: #f9fafa;"></i></a></li>
+          <li><a href="#"><i class="ft-icon fa-brands fa-linkedin" style="color: #f9fafa;"></i></a></li>
+          <li><a href="#"><i class="ft-icon fa-brands fa-facebook" style="color: #f9fafa;"></i></a></li>
+        </ul>
+      </div>
+      <div class="footer-content">
+        <h2 class="ftco-heading-2">Information</h2>
+        <ul class="">
+          <li><a href="#" class="py-2 d-block">About</a></li>
+          <li><a href="#" class="py-2 d-block">Services</a></li>
+          <li><a href="#" class="py-2 d-block">Term and Conditions</a></li>
+          <li><a href="#" class="py-2 d-block">Best Price Guarantee</a></li>
+          <li><a href="#" class="py-2 d-block">Privacy &amp; Cookies Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-content">
+        <h2 class="ftco-heading-2">Customer Support</h2>
+        <ul class="l">
+          <li><a href="#" class="py-2 d-block">FAQ</a></li>
+          <li><a href="#" class="py-2 d-block">Payment Option</a></li>
+          <li><a href="#" class="py-2 d-block">Booking Tips</a></li>
+          <li><a href="#" class="py-2 d-block">How it works</a></li>
+          <li><a href="#" class="py-2 d-block">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-content">
+          <h2 class="ftco-heading-2">Have a Questions?</h2>
+            <ul>
+              <li><i class="fa-solid fa-location-dot ft-com-icon"></i><span class="text">Nairobi,KE.</span></li>
+              <li><a href="#"><i class="fa-solid fa-phone ft-com-icon"></i><span class="text">+254 00000000</span></a></li>
+              <li><a href="#"><i class="fa-regular fa-envelope ft-com-icon"></i><span class="text">carassociates@yahoo.com</span></a></li>
+            </ul>
+      </div>
+      
+  </div>
+  <hr style="margin-left:5rem; margin-right:5rem;">
+  <div class="footer-copyright">
+    <p>Copyright <span class="copyright-mark">&copy;<script>document.write(new Date().getFullYear());</script></span> All rights reserved |CAR Rental  <span class="copyright-mark">Associates</span></p>
+  </div>
+</footer>

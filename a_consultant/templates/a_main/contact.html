@@ -1,0 +1,195 @@
+{% extends 'a_main/base.html' %}
+{% block title_head %} Contacts {% endblock title_head %}
+{% load static %}
+
+{% block layout %}
+<style>
+  .contact-hero-wrap {
+   background-image: url("{% static 'images/bg_3.jpg' %}");
+   position: relative; 
+   background-size: cover;
+   background-repeat: no-repeat;
+   height: 100vh;
+ }
+ .contact-info-container {
+    display:grid;
+    grid-template-columns:2fr 3fr;
+    gap:2rem;
+ }
+ .contact-message-form {
+    background:#e1e6eb;
+    padding:4rem;
+ }
+ .contact-message-form input {
+    background:var(--whiteColor);
+    display: block;
+    margin-bottom: 1.5rem;
+    width:100%;
+    padding:1.7rem;
+    border-radius: .5rem;
+    font-size:1.7rem;
+    color:var(--blackColor);
+    box-shadow:0 0 1px 0 rgba(0,0,0,.4);
+ }
+ .contact-message-form textarea {
+    background:var(--whiteColor);
+    display: block;
+    margin-bottom: 1.5rem;
+    width:100%;
+    padding:1.5rem;
+    border-radius: .5rem;
+    font-size:1.7rem;
+    color:var(--blackColor);
+    resize: vertical;
+    box-shadow:0 0 1px 0 rgba(0,0,0,.4);
+ }
+ .contact-message-form textarea:focus, 
+ .contact-message-form input:focus {
+    border:.01rem solid var(--blueColor);
+ }
+ .contact-message-form input::placeholder {
+    font-size:1.6rem;
+ }
+ .contact-details-container {
+    display:flex;
+    flex-direction: column;
+    gap:2rem;
+    padding-left:2rem;
+    padding-right:2rem;
+    font-size:1.7rem;
+ }
+ .contact-details-container .address-details span {
+    color:rgb(108, 107, 108);
+    font-size:1.7rem;
+ }
+ .contact-details-container .contact-details {
+    display:flex;
+    justify-content: flex-start;
+    gap:2rem;
+    align-items: center;
+    border:.1rem solid #ccc;
+    border-radius: .2rem;
+    padding:4rem;
+    background:#e1e6eb;
+    font-size:1.7rem;
+    width:100%;
+    line-height:2.5rem;
+ }
+ .contact-details .fa-phone, .fa-envelope, .fa-map-location-dot {
+    color:var(--blueColor);
+    font-size: 1.9rem;
+ }
+.map-container {
+  width:100%;
+  height:60rem;
+  padding:5rem;
+}
+.map-container .map-overlay {
+  width:100%;
+  background-color: #e1e6eb;
+  height:100%;
+}
+
+ </style>
+    <section class="contact-hero-wrap" >
+      <div class="breadcrumb-animate">
+        <p class="breadcrumbs"><span class="home-page"><a href="{% url 'home' %}">Home <i class="fa-solid fa-chevron-right chevron"></i></a></span> <span>Contact<i class="fa-solid fa-chevron-right chevron"></i></span></p>
+        <h1 class="bread">Contact Us</h1>
+      </div>
+    </section>
+    
+    <section class="contact-section">
+      <div class="container contact-info-container">
+        	<div class="contact-details-container">
+        		  <div class="contact-details">
+                  <i class="fa-solid fa-map-location-dot"></i>
+			            <p class="address-details"><span>Address:</span><br> BOX, 4444-00100, NAIROBI.</p>
+		          </div>
+		          <div class="contact-details">
+			          	<i class="fa-solid fa-phone"></i>
+			            <p class="address-details"><span>Phone:</span><br> <a href="tel://1234567920">+ 254 235 2355</a></p>
+		          </div>
+		          <div class="contact-details">
+                <i class="fa-solid fa-envelope"></i>
+                <p class="address-details"><span>Email:</span><br> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+              </div>
+          </div>
+          <div class="contact-form-container">
+            <form action="" class="contact-message-form">
+                <input type="text"  placeholder="Your Name" required>
+                <input type="text"  placeholder="Your Email" required>
+                <input type="text" placeholder="Subject" required>
+                <textarea name="" id="" cols="30" rows="7" placeholder="Message" required></textarea>
+                <button type="submit" class="button">Send Message</button>
+            </form>
+          </div>
+      </div>
+        <div class="map-container">
+          <div id="map" class="map-overlay"></div>
+        </div>
+    </section>
+
+<script>    
+var google;
+
+function init() {
+    // Basic options for a simple Google Map
+    // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+    // var myLatlng = new google.maps.LatLng(40.71751, -73.990922);
+    var myLatlng = new google.maps.LatLng(40.69847032728747, -73.9514422416687);
+    // 39.399872
+    // -8.224454
+    
+    var mapOptions = {
+        // How zoomed in you want the map to start at (always required)
+        zoom: 7,
+
+        // The latitude and longitude to center the map (always required)
+        center: myLatlng,
+
+        // How you would like to style the map. 
+        scrollwheel: false,
+        styles: [
+            {
+                "featureType": "administrative.country",
+                "elementType": "geometry",
+                "stylers": [
+                    {
+                        "visibility": "simplified"
+                    },
+                    {
+                        "hue": "#ff0000"
+                    }
+                ]
+            }
+        ]
+    };
+
+    
+
+    // Get the HTML DOM element that will contain your map 
+    // We are using a div with id="map" seen below in the <body>
+    var mapElement = document.getElementById('map');
+
+    // Create the Google Map using out element and options defined above
+    var map = new google.maps.Map(mapElement, mapOptions);
+    
+var addresses = ['Nairobi'];
+
+    for (var x = 0; x < addresses.length; x++) {
+        $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+addresses[x]+'&sensor=false', null, function (data) {
+            var p = data.results[0].geometry.location
+            var latlng = new google.maps.LatLng(p.lat, p.lng);
+            new google.maps.Marker({
+                position: latlng,
+                map: map,
+                icon: 'images/loc.png'
+            });
+
+        });
+    }
+    
+}
+  google.maps.event.addDomListener(window, 'load', init);
+</script>
+{% endblock %}

@@ -1,0 +1,480 @@
+{% extends 'a_main/base.html' %}
+{% block title_head %} Pricing {% endblock title_head %}
+{% load static %}
+
+{% block layout %}
+<style>
+/*Pricing Section */
+.pricing-table-wrap {
+	overflow-x: auto;
+	padding:2rem;
+}
+.table {
+  font-size:1.8rem;
+  color:var(--blackColor);
+  width:100%;
+}
+.table td {
+  padding:3rem;
+  background-color: #ecf0ff;
+}
+
+.table th {
+  padding:4rem;
+  text-align: center;
+  font-size: 2rem;
+  color:var(--whiteColor);
+}
+.table .thead .table_heading_1 {
+  background-color: var(--blueColor);
+}
+.table .thead .table_heading_2 {
+  background-color: rgb(46, 48, 55);
+}
+.table .thead .table_heading_3 {
+  background-color: var(--blackColor);
+}
+ .pricing-hero-wrap {
+	background-image: url("{% static 'images/bg_3.jpg' %}");
+	position: relative; 
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 100vh;
+}
+
+.table .car-image1 {
+	width:15rem;
+	background-color: var(--whiteColor);
+	background-image:url("{% static 'images/car-1.jpg' %}");
+	background-position: center center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+.table .car-image2 {
+	width:15rem;
+	background-color: var(--whiteColor);
+	background-image:url("{% static 'images/car-2.jpg' %}");
+	background-position: center center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+.table .car-image3 {
+	width:15rem;
+	background-color: var(--whiteColor);
+	background-image:url("{% static 'images/car-3.jpg' %}");
+	background-position: center center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+.table .car-image4 {
+	width:15rem;
+	background-color: var(--whiteColor);
+	background-image:url("{% static 'images/car-4.jpg' %}");
+	background-position: center center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+.table .car-image5 {
+	width:15rem;
+	background-color: var(--whiteColor);
+	background-image:url("{% static 'images/car-5.jpg' %}");
+	background-position: center center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+.table .car-image6 {
+	width:15rem;
+	background-color: var(--whiteColor);
+	background-image:url("{% static 'images/car-6.jpg' %}");
+	background-position: center center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+table thead {
+	border-bottom: .1rem solid #ccc;
+}
+table tr {
+	border-bottom: .1rem solid #ccc;
+	border-right: .1rem solid #ccc;
+}
+table {
+	border-collapse: collapse;
+}
+
+.product-name>h3 { 
+	font-size:1.8rem; 
+	font-weight:400;
+	padding-bottom:2rem;
+	color:var(--blackColor);
+	opacity: 80%;
+}
+.product-name .rated>span { 
+	font-size:1.5rem; 
+	font-weight:400;
+	color:var(--blackColor);
+	opacity: 80%;
+}
+
+.table .product-name {
+	background-color: var(--whiteColor);
+}
+
+.table .price {
+	position: relative;
+}
+.table .price .price-rate .num {
+	font-size:2rem;
+	padding-top:1rem;
+	padding-bottom:2rem;
+	color:var(--blueColor);
+	z-index: -2;
+}
+.table .price .price-rate .per, .price .price-rate .subheading  {
+	font-size:1.5rem;
+	padding-top:1rem;
+	padding-bottom:2rem;
+	color:var(--blackColor);
+	opacity: 70%;
+	font-weight:300;
+	z-index: -2;
+}
+
+.table .price:hover .button-rent-overlay {
+	display: flex;
+	cursor:pointer;
+}
+.table .button-rent-overlay {
+	display: none;
+	position:absolute;
+	top:0;
+	left:0;
+	height: 100%;
+	width:100%;
+	background-color: var(--greenColor);
+	justify-content: center;
+	align-items: center;
+	z-index: 20;
+}
+@media (max-width:768px) {
+	.pricing-table-wrap {
+		overflow-x: auto;
+		padding:.5rem;
+	}
+	.pricing-table-wrap::-webkit-scrollbar {
+		display:none;
+	}
+}
+</style>
+	<section class="pricing-hero-wrap" >
+		<div class="breadcrumb-animate">
+			<p class="breadcrumbs"><span class="home-page"><a href="{% url 'home' %}">Home <i class="fa-solid fa-chevron-right chevron"></i></a></span> <span>Pricing<i class="fa-solid fa-chevron-right chevron"></i></span></p>
+		<h1 class="bread">Pricing</h1>
+		</div>
+	</section>
+   
+    <section class="pricing-table-wrap">
+		<table class="table">
+			<thead class="thead">
+				<tr class="table-row">
+				<th>&nbsp;</th>
+				<th>&nbsp;</th>
+				<th class="table_heading_1">Per Hour Rate</th>
+				<th class="table_heading_2">Per Day Rate</th>
+				<th class="table_heading_3">Leasing</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="table-row">
+				<td class="car-image1"></td>
+				<td class="product-name">
+					<h3 class="car-name">Cheverolet SUV Car</h3>
+					<p class="mb-0 rated">
+						<span>rated:</span>
+						<i class="fa fa-solid fa-star" style="font-size:1.6rem;color:var(--greenColor)"></i>
+						<i class="fa fa-solid fa-star" style="font-size:1.6rem;color:var(--greenColor)"></i>
+						<i class="fa fa-solid fa-star" style="font-size:1.6rem;color:var(--greenColor)"></i>
+						<i class="fa fa-solid fa-star" style="font-size:1.6rem;color:var(--greenColor)"></i>
+						<i class="fa fa-solid fa-star" style="font-size:1.6rem;color:var(--greenColor)"></i>
+					</p>
+				</td>
+				
+				<td class="price">
+					<p class="button-rent-overlay"><a class="button" href="#">Rent a car</a></p>
+					<div class="price-rate">
+						<h3>
+							<span class="num"><small class="currency">$</small> 10.99</span>
+							<span class="per">/per hour</span>
+						</h3>
+						<span class="subheading">$3/hour fuel surcharges</span>
+					</div>
+				</td>
+				
+				<td class="price">
+					<p class="button-rent-overlay"><a class="button" href="#">Rent a car</a></p>
+					<div class="price-rate">
+						<h3>
+							<span class="num"><small class="currency">$</small> 60.99</span>
+							<span class="per">/per day</span>
+						</h3>
+						<span class="subheading">$3/hour fuel surcharges</span>
+					</div>
+				</td>
+
+				<td class="price">
+					<p class="button-rent-overlay"><a class="button" href="#">Rent a car</a></p>
+					<div class="price-rate">
+						<h3>
+							<span class="num"><small class="currency">$</small> 995.99</span>
+							<span class="per">/per month</span>
+						</h3>
+						<span class="subheading">$3/hour fuel surcharges</span>
+					</div>
+				</td>
+				</tr><!-- END TR-->
+
+				<tr class="table-row">
+				<td class="car-image2"></td>
+				<td class="product-name">
+					<h3>Cheverolet SUV Car</h3>
+					<p class="mb-0 rated">
+						<span>rated:</span>
+						<i class="fa fa-solid fa-star" style="font-size:1.6rem;color:var(--greenColor)"></i>
+						<i class="fa fa-solid fa-star" style="font-size:1.6rem;color:var(--greenColor)"></i>
+						<i class="fa fa-solid fa-star" style="font-size:1.6rem;color:var(--greenColor)"></i>
+						<i class="fa fa-solid fa-star" style="font-size:1.6rem;color:var(--greenColor)"></i>
+						<i class="fa fa-solid fa-star" style="font-size:1.6rem;color:var(--greenColor)"></i>
+					</p>
+				</td>
+				
+				<td class="price">
+					<p class="button-rent-overlay"><a class="button" href="#">Rent a car</a></p>
+					<div class="price-rate">
+						<h3>
+							<span class="num"><small class="currency">$</small> 10.99</span>
+							<span class="per">/per hour</span>
+						</h3>
+						<span class="subheading">$3/hour fuel surcharges</span>
+					</div>
+				</td>
+				
+				<td class="price">
+					<p class="button-rent-overlay"><a class="button" href="#">Rent a car</a></p>
+					<div class="price-rate">
+						<h3>
+							<span class="num"><small class="currency">$</small> 60.99</span>
+							<span class="per">/per day</span>
+						</h3>
+						<span class="subheading">$3/hour fuel surcharges</span>
+					</div>
+				</td>
+
+				<td class="price">
+					<p class="button-rent-overlay"><a class="button" href="#">Rent a car</a></p>
+					<div class="price-rate">
+						<h3>
+							<span class="num"><small class="currency">$</small> 995.99</span>
+							<span class="per">/per month</span>
+						</h3>
+						<span class="subheading">$3/hour fuel surcharges</span>
+					</div>
+				</td>
+				</tr><!-- END TR-->
+
+				<tr class="table-row">
+				<td class="car-image3"></td>
+				<td class="product-name">
+					<h3>Cheverolet SUV Car</h3>
+					<p class="mb-0 rated">
+						<span>rated:</span>
+						<i class="fa fa-solid fa-star" style="font-size:1.6rem;color:var(--greenColor)"></i>
+						<i class="fa fa-solid fa-star" style="font-size:1.6rem;color:var(--greenColor)"></i>
+						<i class="fa fa-solid fa-star" style="font-size:1.6rem;color:var(--greenColor)"></i>
+						<i class="fa fa-solid fa-star" style="font-size:1.6rem;color:var(--greenColor)"></i>
+						<i class="fa fa-solid fa-star" style="font-size:1.6rem;color:var(--greenColor)"></i>
+					</p>
+				</td>
+				
+				<td class="price">
+					<p class="button-rent-overlay"><a class="button" href="#">Rent a car</a></p>
+					<div class="price-rate">
+						<h3>
+							<span class="num"><small class="currency">$</small> 10.99</span>
+							<span class="per">/per hour</span>
+						</h3>
+						<span class="subheading">$3/hour fuel surcharges</span>
+					</div>
+				</td>
+				
+				<td class="price">
+					<p class="button-rent-overlay"><a class="button" href="#">Rent a car</a></p>
+					<div class="price-rate">
+						<h3>
+							<span class="num"><small class="currency">$</small> 60.99</span>
+							<span class="per">/per day</span>
+						</h3>
+						<span class="subheading">$3/hour fuel surcharges</span>
+					</div>
+				</td>
+
+				<td class="price">
+					<p class="button-rent-overlay"><a class="button" href="#">Rent a car</a></p>
+					<div class="price-rate">
+						<h3>
+							<span class="num"><small class="currency">$</small> 995.99</span>
+							<span class="per">/per month</span>
+						</h3>
+						<span class="subheading">$3/hour fuel surcharges</span>
+					</div>
+				</td>
+				</tr><!-- END TR-->
+
+				<tr class="table-row">
+				<td class="car-image4"></td>
+				<td class="product-name">
+					<h3>Cheverolet SUV Car</h3>
+					<p class="mb-0 rated">
+						<span>rated:</span>
+						<i class="fa fa-solid fa-star" style="font-size:1.6rem;color:var(--greenColor)"></i>
+						<i class="fa fa-solid fa-star" style="font-size:1.6rem;color:var(--greenColor)"></i>
+						<i class="fa fa-solid fa-star" style="font-size:1.6rem;color:var(--greenColor)"></i>
+						<i class="fa fa-solid fa-star" style="font-size:1.6rem;color:var(--greenColor)"></i>
+						<i class="fa fa-solid fa-star" style="font-size:1.6rem;color:var(--greenColor)"></i>
+					</p>
+				</td>
+				
+				<td class="price">
+					<p class="button-rent-overlay"><a class="button" href="#">Rent a car</a></p>
+					<div class="price-rate">
+						<h3>
+							<span class="num"><small class="currency">$</small> 10.99</span>
+							<span class="per">/per hour</span>
+						</h3>
+						<span class="subheading">$3/hour fuel surcharges</span>
+					</div>
+				</td>
+				
+				<td class="price">
+					<p class="button-rent-overlay"><a class="button" href="#">Rent a car</a></p>
+					<div class="price-rate">
+						<h3>
+							<span class="num"><small class="currency">$</small> 60.99</span>
+							<span class="per">/per day</span>
+						</h3>
+						<span class="subheading">$3/hour fuel surcharges</span>
+					</div>
+				</td>
+
+				<td class="price">
+					<p class="button-rent-overlay"><a class="button" href="#">Rent a car</a></p>
+					<div class="price-rate">
+						<h3>
+							<span class="num"><small class="currency">$</small> 995.99</span>
+							<span class="per">/per month</span>
+						</h3>
+						<span class="subheading">$3/hour fuel surcharges</span>
+					</div>
+				</td>
+				</tr><!-- END TR-->
+
+
+				<tr class="table-row">
+				<td class="car-image5"></td>
+				<td class="product-name">
+					<h3>Cheverolet SUV Car</h3>
+					<p class="mb-0 rated">
+						<span>rated:</span>
+						<i class="fa fa-solid fa-star" style="font-size:1.6rem;color:var(--greenColor)"></i>
+						<i class="fa fa-solid fa-star" style="font-size:1.6rem;color:var(--greenColor)"></i>
+						<i class="fa fa-solid fa-star" style="font-size:1.6rem;color:var(--greenColor)"></i>
+						<i class="fa fa-solid fa-star" style="font-size:1.6rem;color:var(--greenColor)"></i>
+						<i class="fa fa-solid fa-star" style="font-size:1.6rem;color:var(--greenColor)"></i>
+					</p>
+				</td>
+				
+				<td class="price">
+					<p class="button-rent-overlay"><a class="button" href="#">Rent a car</a></p>
+					<div class="price-rate">
+						<h3>
+							<span class="num"><small class="currency">$</small> 10.99</span>
+							<span class="per">/per hour</span>
+						</h3>
+						<span class="subheading">$3/hour fuel surcharges</span>
+					</div>
+				</td>
+				
+				<td class="price">
+					<p class="button-rent-overlay"><a class="button" href="#">Rent a car</a></p>
+					<div class="price-rate">
+						<h3>
+							<span class="num"><small class="currency">$</small> 60.99</span>
+							<span class="per">/per day</span>
+						</h3>
+						<span class="subheading">$3/hour fuel surcharges</span>
+					</div>
+				</td>
+
+				<td class="price">
+					<p class="button-rent-overlay"><a class="button" href="#">Rent a car</a></p>
+					<div class="price-rate">
+						<h3>
+							<span class="num"><small class="currency">$</small> 995.99</span>
+							<span class="per">/per month</span>
+						</h3>
+						<span class="subheading">$3/hour fuel surcharges</span>
+					</div>
+				</td>
+				</tr><!-- END TR-->
+
+
+				<tr class="table-row">
+				<td class="car-image6"></td>
+				<td class="product-name">
+					<h3>Cheverolet SUV Car</h3>
+					<p class="mb-0 rated">
+						<span>rated:</span>
+						<i class="fa fa-solid fa-star" style="font-size:1.6rem;color:var(--greenColor)"></i>
+						<i class="fa fa-solid fa-star" style="font-size:1.6rem;color:var(--greenColor)"></i>
+						<i class="fa fa-solid fa-star" style="font-size:1.6rem;color:var(--greenColor)"></i>
+						<i class="fa fa-solid fa-star" style="font-size:1.6rem;color:var(--greenColor)"></i>
+						<i class="fa fa-solid fa-star" style="font-size:1.6rem;color:var(--greenColor)"></i>
+					</p>
+				</td>
+				
+				<td class="price">
+					<p class="button-rent-overlay"><a class="button" href="#">Rent a car</a></p>
+					<div class="price-rate">
+						<h3>
+							<span class="num"><small class="currency">$</small> 10.99</span>
+							<span class="per">/per hour</span>
+						</h3>
+						<span class="subheading">$3/hour fuel surcharges</span>
+					</div>
+				</td>
+				
+				<td class="price">
+					<p class="button-rent-overlay"><a class="button" href="#">Rent a car</a></p>
+					<div class="price-rate">
+						<h3>
+							<span class="num"><small class="currency">$</small> 60.99</span>
+							<span class="per">/per day</span>
+						</h3>
+						<span class="subheading">$3/hour fuel surcharges</span>
+					</div>
+				</td>
+
+				<td class="price">
+					<p class="button-rent-overlay"><a class="button" href="#">Rent a car</a></p>
+					<div class="price-rate">
+						<h3>
+							<span class="num"><small class="currency">$</small> 995.99</span>
+							<span class="per">/per month</span>
+						</h3>
+						<span class="subheading">$3/hour fuel surcharges</span>
+					</div>
+				</td>
+				</tr><!-- END TR-->
+			</tbody>
+		</table>
+	</section>
+{% endblock %}

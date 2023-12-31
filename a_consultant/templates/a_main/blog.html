@@ -1,0 +1,214 @@
+{% extends 'a_main/base.html' %}
+{% block title_head %} Blog {% endblock title_head %}
+{% load static %}
+
+{% block layout %}
+<style>
+	.blog-hero-wrap {
+	 background-image: url("{% static 'images/bg_3.jpg' %}");
+	 position: relative; 
+	 background-size: cover;
+	 background-repeat: no-repeat;
+	 height: 100vh;
+   }
+   .blog-post-body {
+    text-align: center;
+    padding:4rem;
+    padding-top:0rem;
+    margin:2rem auto;
+    font-size:1.7rem;
+   }
+   .blog-post-body .blog-text {
+    margin:2rem auto;
+    font-size:1.8rem;
+    line-height: 3rem;
+    color:rgb(99, 96, 96);
+   }
+   .blog-author-details {
+    display:flex;
+    flex-wrap:wrap;
+    gap:1.2rem;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    color:var(--blueColor);
+    font-size:1.6rem;
+   }
+   .blog-author-details a {
+    color:var(--blueColor);
+    font-size:1.6rem;
+    font-weight: bold;
+   }
+  .blog-heading a {
+    color:var(--blackColor);
+    font-size:2rem;
+    font-weight: bold;
+   }
+  .pagination-buttons {
+    display:flex;
+    flex-wrap: wrap;
+    gap:1.5rem;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1rem;
+  }
+  .pagination-buttons>li a {
+    color:var(--blueColor);
+    font-size:1.5rem;
+    border-radius: 50%;
+    padding:1rem 1.5rem;
+    border:.01rem solid #ccc;
+    background-color:var(--whiteColor);
+    cursor:pointer;
+  }
+  .pagination-buttons>li a:hover {
+    background-color:var(--blueColor);
+    color:var(--whiteColor);
+  }
+  .pagination-buttons>li a.active {
+    background-color:var(--blueColor);
+    color:var(--whiteColor);
+  }
+  .blog-img-container {
+    padding:5rem;
+    padding-bottom:1rem;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+  }
+  .blog-img-container img {
+    width:100%;
+    border-radius: 1rem;
+  }
+  @media (max-width:768px) {
+    .blog-post-body {
+      padding:1rem;
+    }
+    .blog-img-container {
+      padding:2rem;
+      padding-bottom:1rem;
+    }
+  }
+</style>
+
+   	<section class="blog-hero-wrap" >
+      <div class="breadcrumb-animate">
+      <p class="breadcrumbs"><span class="home-page"><a href="{% url 'home' %}">Home <i class="fa-solid fa-chevron-right chevron"></i></a></span> <span>Blog<i class="fa-solid fa-chevron-right chevron"></i></span></p>
+      <h1 class="bread">Our Blog</h1>
+      </div>
+    </section>
+  
+    <section class="">
+      <div class="container">
+        
+          	<div class="blog-entry">
+              <a href="blog-single.html" class="blog-img-container">
+                <img src="{% static 'images/image_1.jpg' %}" alt="blog_img">
+              </a>
+              <div class="blog-post-body">
+              	<div class="blog-author-details">
+                  <div><a href="#">Oct. 29, 2019</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                </div>
+                <h3 class="blog-heading"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>
+                <p class="blog-text">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                <p><a href="blog-single.html" class="blog-view-button">Continue <i class="fa-solid fa-long-arrow-right"></i></a></p>
+              </div>
+            </div>
+          
+          	<div class="blog-entry">
+              <a href="blog-single.html" class="blog-img-container">
+                <img src="{% static 'images/image_3.jpg' %}" alt="blog_img">
+              </a>
+              <div class="blog-post-body">
+              	<div class="blog-author-details">
+                  <div><a href="#">Oct. 29, 2019</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                </div>
+                <h3 class="blog-heading"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>
+                <p class="blog-text">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                <p><a href="blog-single.html" class="blog-view-button">Continue <i class="fa-solid fa-long-arrow-right"></i></a></p>
+              </div>
+            </div>
+          
+          	<div class="blog-entry">
+              <a href="blog-single.html" class="blog-img-container">
+                <img src="{% static 'images/image_2.jpg' %}" alt="blog_img">
+              </a>
+              <div class="blog-post-body">
+              	<div class="blog-author-details">
+                  <div><a href="#">Oct. 29, 2019</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                </div>
+                <h3 class="blog-heading"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>
+                <p class="blog-text">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                <p><a href="blog-single.html" class="blog-view-button">Continue <i class="fa-solid fa-long-arrow-right"></i></a></p>
+              </div>
+            </div>
+          
+          	<div class="blog-entry">
+              <a href="blog-single.html" class="blog-img-container">
+                <img src="{% static 'images/image_5.jpg' %}" alt="blog_img">
+              </a>
+              <div class="blog-post-body">
+              	<div class="blog-author-details">
+                  <div><a href="#">Oct. 29, 2019</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                </div>
+                <h3 class="blog-heading"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>
+                <p class="blog-text">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                <p><a href="blog-single.html" class="blog-view-button">Continue <i class="fa-solid fa-long-arrow-right"></i></a></p>
+              </div>
+            </div>
+
+          	<div class="blog-entry">
+              <a href="blog-single.html" class="blog-img-container">
+                <img src="{% static 'images/image_6.jpg' %}" alt="blog_img">
+              </a>
+              <div class="blog-post-body">
+              	<div class="blog-author-details">
+                  <div><a href="#">Oct. 29, 2019</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                </div>
+                <h3 class="blog-heading"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>
+                <p class="blog-text">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                <p><a href="blog-single.html" class="blog-view-button">Continue <i class="fa-solid fa-long-arrow-right"></i></a></p>
+              </div>
+            </div>
+          
+          	<div class="blog-entry">
+              <a href="blog-single.html" class="blog-img-container">
+                <img src="{% static 'images/image_4.jpg' %}" alt="blog_img">
+              </a>
+              <div class="blog-post-body">
+              	<div class="blog-author-details">
+                  <div><a href="#">Oct. 29, 2019</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                </div>
+                <h3 class="blog-heading"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>
+                <p class="blog-text">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                <p><a href="blog-single.html" class="blog-view-button">Continue <i class="fa-solid fa-long-arrow-right"></i></a></p>
+              </div>
+            </div>
+    
+          <div class="container" >
+              <ul class="pagination-buttons">
+                <li><a href="#">&lt;</a></li>
+                <li><a class="active">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&gt;</a></li>
+              </ul>
+          </div>
+      </div>
+    </section>
+
+   {% endblock %}
