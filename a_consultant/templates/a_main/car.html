@@ -110,6 +110,7 @@
 		align-items: center;
 		padding-bottom: 1rem;
 	}
+
 	.pagination-buttons>li a {
 		color:var(--blueColor);
 		font-size:1.5rem;
@@ -119,12 +120,30 @@
 		background-color:var(--whiteColor);
 		cursor:pointer;
 	}
+
 	.pagination-buttons>li a:hover {
 		background-color:var(--blueColor);
 		color:var(--whiteColor);
 	}
 	.pagination-buttons>li a.active {
 		background-color:var(--blueColor);
+		color:var(--whiteColor);
+	}
+	.categories-container {
+		display:flex;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		align-items: center;
+		gap:2rem;
+		margin-bottom:1rem;
+		font-size:1.8rem;
+		color:var(--blueColor);
+	}
+	.categories-container li {
+		padding:1rem 2rem;
+		border-radius: .3rem;
+		background:var(--blueColor);
+		font-size:1.8rem;
 		color:var(--whiteColor);
 	}
 	@media (min-width: 768px) and (max-width:1024px){
@@ -147,16 +166,29 @@
 				<span class="subheading">What we offer</span>
 				<h2 class="heading">Choose your Car</h2>
 			</div>
+			
+			<div class="container">
+				<ul class="categories-container">
+					{% for category in categories %}
+					<li>{{category}}</li>
+					{% endfor %}
+				</ul>
+			</div>
 				<div class="home-featured-car-container">
+					{% for car in cars %}
 					<div class="car-item">
 						<div class="home-featured-car-img-container">
-							<img src="{% static 'images/car-1.jpg' %}" alt="car-img">
+							<img src="{{ car.image.url }}" alt="car-img">
 						</div>
 						<div class="featured-car-card-body">
-							<h2 class="featured-car-name"><a href="#">Mercedes Grand Sedan</a></h2>
+							{% for brand in car.brands.all %}
+							{% if brand.slug == car.brands.slug %}
+							<h2 class="featured-car-name"><a href="#">{{brand.slug}}</a></h2>
+							{% endif %}
+							{% endfor %}
 							<div class="car-name_price">
-								<span class="cat">Cheverolet</span>
-								<p class="price">$500 <span>/day</span></p>
+								<span class="cat">{{car.name}}</span>
+								<p class="price">${{car.hire_rate}} <span>/day</span></p>
 							</div>
 							<div class="home-car-book-btns">
 								<a href="" class="book-now-btn" style="padding:1.2rem 4rem;background-color: var(--blueColor);border-radius:.2rem;color:var(--whiteColor);">Book now</a> 
@@ -164,86 +196,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="car-item">
-						<div class="home-featured-car-img-container">
-							<img src="{% static 'images/car-2.jpg' %}" alt="car-img">
-						</div>
-						<div class="featured-car-card-body">
-							<h2 class="featured-car-name"><a href="#">Mercedes Grand Sedan</a></h2>
-							<div class="car-name_price">
-								<span class="cat">Cheverolet</span>
-								<p class="price">$500 <span>/day</span></p>
-							</div>
-							<div class="home-car-book-btns">
-								<a href="" class="book-now-btn" style="padding:1.2rem 4rem;background-color: var(--blueColor);border-radius:.2rem;color:var(--whiteColor);">Book now</a> 
-								<a href="" class="detail-btn"  style="padding:1.2rem 5rem; background-color: var(--greenColor);border-radius:.2rem;color:var(--whiteColor);">Details</a>
-							</div>
-						</div>
-					</div>
-					<div class="car-item">
-						<div class="home-featured-car-img-container">
-							<img src="{% static 'images/car-3.jpg' %}" alt="car-img">
-						</div>
-						<div class="featured-car-card-body">
-							<h2 class="featured-car-name"><a href="#">Mercedes Grand Sedan</a></h2>
-							<div class="car-name_price">
-								<span class="cat">Cheverolet</span>
-								<p class="price">$500 <span>/day</span></p>
-							</div>
-							<div class="home-car-book-btns">
-								<a href="" class="book-now-btn" style="padding:1.2rem 4rem;background-color: var(--blueColor);border-radius:.2rem;color:var(--whiteColor);">Book now</a> 
-								<a href="" class="detail-btn"  style="padding:1.2rem 5rem; background-color: var(--greenColor);border-radius:.2rem;color:var(--whiteColor);">Details</a>
-							</div>
-						</div>
-					</div>
-					<div class="car-item">
-						<div class="home-featured-car-img-container">
-							<img src="{% static 'images/car-4.jpg' %}" alt="car-img">
-						</div>
-						<div class="featured-car-card-body">
-							<h2 class="featured-car-name"><a href="#">Mercedes Grand Sedan</a></h2>
-							<div class="car-name_price">
-								<span class="cat">Cheverolet</span>
-								<p class="price">$500 <span>/day</span></p>
-							</div>
-							<div class="home-car-book-btns">
-								<a href="" class="book-now-btn" style="padding:1.2rem 4rem;background-color: var(--blueColor);border-radius:.2rem;color:var(--whiteColor);">Book now</a> 
-								<a href="" class="detail-btn"  style="padding:1.2rem 5rem; background-color: var(--greenColor);border-radius:.2rem;color:var(--whiteColor);">Details</a>
-							</div>
-						</div>
-					</div>
-					<div class="car-item">
-						<div class="home-featured-car-img-container">
-							<img src="{% static 'images/car-5.jpg' %}" alt="car-img">
-						</div>
-						<div class="featured-car-card-body">
-							<h2 class="featured-car-name"><a href="#">Mercedes Grand Sedan</a></h2>
-							<div class="car-name_price">
-								<span class="cat">Cheverolet</span>
-								<p class="price">$500 <span>/day</span></p>
-							</div>
-							<div class="home-car-book-btns">
-								<a href="" class="book-now-btn" style="padding:1.2rem 4rem;background-color: var(--blueColor);border-radius:.2rem;color:var(--whiteColor);">Book now</a> 
-								<a href="" class="detail-btn"  style="padding:1.2rem 5rem; background-color: var(--greenColor);border-radius:.2rem;color:var(--whiteColor);">Details</a>
-							</div>
-						</div>
-					</div>
-					<div class="car-item">
-						<div class="home-featured-car-img-container">
-							<img src="{% static 'images/car-6.jpg' %}" alt="car-img">
-						</div>
-						<div class="featured-car-card-body">
-							<h2 class="featured-car-name"><a href="#">Mercedes Grand Sedan</a></h2>
-							<div class="car-name_price">
-								<span class="cat">Cheverolet</span>
-								<p class="price">$500 <span>/day</span></p>
-							</div>
-							<div class="home-car-book-btns">
-								<a href="" class="book-now-btn" style="padding:1.2rem 4rem;background-color: var(--blueColor);border-radius:.2rem;color:var(--whiteColor);">Book now</a> 
-								<a href="" class="detail-btn"  style="padding:1.2rem 5rem; background-color: var(--greenColor);border-radius:.2rem;color:var(--whiteColor);">Details</a>
-							</div>
-						</div>
-					</div>
+					{% endfor %}
 				</div>
 				<div class="container" >
 					<ul class="pagination-buttons">

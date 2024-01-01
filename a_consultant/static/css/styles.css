@@ -50,6 +50,7 @@ body {
     margin:2rem auto;
 }
 }
+
 #back-to-top-btn {
   position: fixed;
   bottom:2rem;
@@ -77,6 +78,7 @@ body {
   border:none;
   outline:none;
 }
+
 .button {
   padding:1.5rem 2rem;
   background: var(--bluevarColor);

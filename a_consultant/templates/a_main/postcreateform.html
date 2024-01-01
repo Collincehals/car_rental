@@ -1,0 +1,70 @@
+{% extends 'a_main/base.html' %}
+{% block title_head %} Post Car {% endblock title_head %}
+{% load static %}
+
+{% block layout %}
+<style>
+    form {
+        max-width: 60rem;
+        margin:2rem auto;
+        width: 100%;
+        padding:2rem;
+        background:rgba(241,240,253);
+        box-shadow: var(--boxShadow);
+        margin-bottom:1rem;
+        font-size:1.5rem;
+        color:var(--blackColor);
+    }
+    form p {
+        display: flex;
+       
+    }
+
+    form label {
+        margin-right:7rem;
+    }
+
+    form input {
+        padding:1.2rem;
+        font-size:1.5rem;
+        color:var(--blackColor);
+        width:100%;
+    }
+    form textarea {
+        padding:1.2rem;
+        font-size:1.5rem;
+        color:var(--blackColor);
+        width:100%;
+        resize: vertical;
+    }
+
+	@media (min-width: 768px) and (max-width:1024px){
+	 .home-featured-car-container {
+		grid-template-columns: repeat(2, 1fr);
+		gap:3rem;
+	} 
+	}
+	
+	@media (max-width: 768px) {
+	 .home-featured-car-container {
+		grid-template-columns: 100%;
+		gap:1rem;
+	}
+	}
+	</style>
+	
+	<section class="container">
+			<div class="featured-vehicle-intro">
+				<span class="subheading">What we offer</span>
+				<h2 class="heading">Choose your Car</h2>
+			</div>
+			<div class="container">
+				<form method="POST" enctype="multipart/form-data">
+					{% csrf_token %}
+					{{carpostform}}
+					<button type="submit" class="button">Post</button>
+				</form>
+			</div>
+	</section>
+	<!--Home-featured cars ENDS-->
+{% endblock %}
