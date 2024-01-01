@@ -1,205 +1,261 @@
 {% extends 'a_main/base.html' %}
-{% block title_head %} Projects {% endblock title_head %}
+{% block title_head %} Cars {% endblock title_head %}
 {% load static %}
 
 {% block layout %}
-	 <section class="contact-hero-wrap" >
+<style>
+	.cars-hero-wrap {
+	 background-image: url("{% static 'images/bg_3.jpg' %}");
+	 position: relative; 
+	 background-size: cover;
+	 background-repeat: no-repeat;
+	 height: 100vh;
+   }
+</style>
+	<section class="cars-hero-wrap" >
 		<div class="breadcrumb-animate">
-		  <p class="breadcrumbs"><span class="home-page"><a href="{% url 'home' %}">Home <i class="fa-solid fa-chevron-right chevron"></i></a></span> <span>Cars<i class="fa-solid fa-chevron-right chevron"></i></span></p>
+		<p class="breadcrumbs"><span class="home-page"><a href="{% url 'home' %}">Home <i class="fa-solid fa-chevron-right chevron"></i></a></span> <span>Blog<i class="fa-solid fa-chevron-right chevron"></i></span></p>
 		<h1 class="bread">Choose Your Car</h1>
 		</div>
-	  </section>
+	</section>
 
-		<section class="ftco-section bg-light">
-    	<div class="container">
-    		<div class="row">
-    			<div class="col-md-4">
-    				<div class="car-wrap rounded ftco-animate">
-    					<div class="img rounded d-flex align-items-end" style="background-image: url(images/car-1.jpg);">
-    					</div>
-    					<div class="text">
-    						<h2 class="mb-0"><a href="car-single.html">Mercedes Grand Sedan</a></h2>
-    						<div class="d-flex mb-3">
-	    						<span class="cat">Cheverolet</span>
-	    						<p class="price ml-auto">$500 <span>/day</span></p>
-    						</div>
-    						<p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-md-4">
-    				<div class="car-wrap rounded ftco-animate">
-    					<div class="img rounded d-flex align-items-end" style="background-image: url(images/car-2.jpg);">
-    					</div>
-    					<div class="text">
-    						<h2 class="mb-0"><a href="car-single.html">Range Rover</a></h2>
-    						<div class="d-flex mb-3">
-	    						<span class="cat">Subaru</span>
-	    						<p class="price ml-auto">$500 <span>/day</span></p>
-    						</div>
-    						<p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-md-4">
-    				<div class="car-wrap rounded ftco-animate">
-    					<div class="img rounded d-flex align-items-end" style="background-image: url(images/car-3.jpg);">
-    					</div>
-    					<div class="text">
-    						<h2 class="mb-0"><a href="car-single.html">Mercedes Grand Sedan</a></h2>
-    						<div class="d-flex mb-3">
-	    						<span class="cat">Cheverolet</span>
-	    						<p class="price ml-auto">$500 <span>/day</span></p>
-    						</div>
-    						<p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
-    					</div>
-    				</div>
-    			</div>
+		<!--Home-featured cars STARTS-->
+<style>
+	.featured-vehicle-intro {
+		text-align: center;
+		line-height:3rem;
+		margin-bottom:3rem;
+	}
+	.featured-vehicle-intro .subheading {
+		text-transform: uppercase;
+		font-weight: 600;
+		color:var(--blueColor);
+		font-size: 1.5rem;
+		padding-bottom:2rem;
+		}
+	.featured-vehicle-intro .heading {
+		font-size: 3rem;
+		padding-bottom: 1rem;
+	}
+	.home-featured-car-container {
+		display:grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap:3rem;
+	}
+	.car-item {
+		background-color: rgba(241,240,253,0.9);
+		border:.01rem solid #ccc;
+		border-radius: .5rem;
+	}
+	.car-item .home-featured-car-img-container {
+		width:100%;
+		height:25rem;
+		overflow: hidden;
+	}
+	.car-item .home-featured-car-img-container img {
+		width:100%;
+		height:100%;
+		object-fit: cover;
+		object-position: center;
+		border-radius: .5rem;
+	}
+	.car-item .home-featured-car-img-container img:hover {
+		transform:scale(1.1);
+	
+	}
+	.featured-car-card-body {
+		padding:2rem;
+		font-size: 1.7rem;
+	}
+	
+	.featured-car-name a {
+		color:var(--blackColor);
+		font-weight: 600;
+		font-size:2.1rem;
+	}
+	.car-name_price {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		padding-top: .8rem;
+		padding-bottom: 2rem;
+	}
+	.car-name_price .cat{
+		color:var(--blackColor);
+		opacity: 50%;
+		font-size:1.6rem;
+	}
+	.car-name_price .price{
+		color:var(--blueColor);
+		font-weight:600;
+	}
+	.car-name_price .price span{
+		color:var(--blackColor);
+		opacity: 50%;
+		font-size:1.6rem;
+		font-weight:400;
+	}
+	.home-car-book-btns {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		gap:1rem;
+	}
 
-    			<div class="col-md-4">
-    				<div class="car-wrap rounded ftco-animate">
-    					<div class="img rounded d-flex align-items-end" style="background-image: url(images/car-4.jpg);">
-    					</div>
-    					<div class="text">
-    						<h2 class="mb-0"><a href="car-single.html">Mercedes Grand Sedan</a></h2>
-    						<div class="d-flex mb-3">
-	    						<span class="cat">Cheverolet</span>
-	    						<p class="price ml-auto">$500 <span>/day</span></p>
-    						</div>
-    						<p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-md-4">
-    				<div class="car-wrap rounded ftco-animate">
-    					<div class="img rounded d-flex align-items-end" style="background-image: url(images/car-5.jpg);">
-    					</div>
-    					<div class="text">
-    						<h2 class="mb-0"><a href="car-single.html">Range Rover</a></h2>
-    						<div class="d-flex mb-3">
-	    						<span class="cat">Subaru</span>
-	    						<p class="price ml-auto">$500 <span>/day</span></p>
-    						</div>
-    						<p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-md-4">
-    				<div class="car-wrap rounded ftco-animate">
-    					<div class="img rounded d-flex align-items-end" style="background-image: url(images/car-6.jpg);">
-    					</div>
-    					<div class="text">
-    						<h2 class="mb-0"><a href="car-single.html">Mercedes Grand Sedan</a></h2>
-    						<div class="d-flex mb-3">
-	    						<span class="cat">Cheverolet</span>
-	    						<p class="price ml-auto">$500 <span>/day</span></p>
-    						</div>
-    						<p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
-    					</div>
-    				</div>
-    			</div>
-
-    			<div class="col-md-4">
-    				<div class="car-wrap rounded ftco-animate">
-    					<div class="img rounded d-flex align-items-end" style="background-image: url(images/car-7.jpg);">
-    					</div>
-    					<div class="text">
-    						<h2 class="mb-0"><a href="car-single.html">Mercedes Grand Sedan</a></h2>
-    						<div class="d-flex mb-3">
-	    						<span class="cat">Cheverolet</span>
-	    						<p class="price ml-auto">$500 <span>/day</span></p>
-    						</div>
-    						<p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-md-4">
-    				<div class="car-wrap rounded ftco-animate">
-    					<div class="img rounded d-flex align-items-end" style="background-image: url(images/car-8.jpg);">
-    					</div>
-    					<div class="text">
-    						<h2 class="mb-0"><a href="car-single.html">Range Rover</a></h2>
-    						<div class="d-flex mb-3">
-	    						<span class="cat">Subaru</span>
-	    						<p class="price ml-auto">$500 <span>/day</span></p>
-    						</div>
-    						<p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-md-4">
-    				<div class="car-wrap rounded ftco-animate">
-    					<div class="img rounded d-flex align-items-end" style="background-image: url(images/car-9.jpg);">
-    					</div>
-    					<div class="text">
-    						<h2 class="mb-0"><a href="car-single.html">Mercedes Grand Sedan</a></h2>
-    						<div class="d-flex mb-3">
-	    						<span class="cat">Cheverolet</span>
-	    						<p class="price ml-auto">$500 <span>/day</span></p>
-    						</div>
-    						<p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
-    					</div>
-    				</div>
-    			</div>
-
-    			<div class="col-md-4">
-    				<div class="car-wrap rounded ftco-animate">
-    					<div class="img rounded d-flex align-items-end" style="background-image: url(images/car-10.jpg);">
-    					</div>
-    					<div class="text">
-    						<h2 class="mb-0"><a href="car-single.html">Mercedes Grand Sedan</a></h2>
-    						<div class="d-flex mb-3">
-	    						<span class="cat">Cheverolet</span>
-	    						<p class="price ml-auto">$500 <span>/day</span></p>
-    						</div>
-    						<p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-md-4">
-    				<div class="car-wrap rounded ftco-animate">
-    					<div class="img rounded d-flex align-items-end" style="background-image: url(images/car-11.jpg);">
-    					</div>
-    					<div class="text">
-    						<h2 class="mb-0"><a href="car-single.html">Range Rover</a></h2>
-    						<div class="d-flex mb-3">
-	    						<span class="cat">Subaru</span>
-	    						<p class="price ml-auto">$500 <span>/day</span></p>
-    						</div>
-    						<p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-md-4">
-    				<div class="car-wrap rounded ftco-animate">
-    					<div class="img rounded d-flex align-items-end" style="background-image: url(images/car-12.jpg);">
-    					</div>
-    					<div class="text">
-    						<h2 class="mb-0"><a href="car-single.html">Mercedes Grand Sedan</a></h2>
-    						<div class="d-flex mb-3">
-	    						<span class="cat">Cheverolet</span>
-	    						<p class="price ml-auto">$500 <span>/day</span></p>
-    						</div>
-    						<p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
-    					</div>
-    				</div>
-    			</div>
-    		</div>
-    		<div class="row mt-5">
-          <div class="col text-center">
-            <div class="block-27">
-              <ul>
-                <li><a href="#">&lt;</a></li>
-                <li class="active"><span>1</span></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&gt;</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-    	</div>
-    </section>
+		.pagination-buttons {
+		display:flex;
+		flex-wrap: wrap;
+		gap:1.5rem;
+		justify-content: center;
+		align-items: center;
+		padding-bottom: 1rem;
+	}
+	.pagination-buttons>li a {
+		color:var(--blueColor);
+		font-size:1.5rem;
+		border-radius: 50%;
+		padding:1rem 1.5rem;
+		border:.01rem solid #ccc;
+		background-color:var(--whiteColor);
+		cursor:pointer;
+	}
+	.pagination-buttons>li a:hover {
+		background-color:var(--blueColor);
+		color:var(--whiteColor);
+	}
+	.pagination-buttons>li a.active {
+		background-color:var(--blueColor);
+		color:var(--whiteColor);
+	}
+	@media (min-width: 768px) and (max-width:1024px){
+	 .home-featured-car-container {
+		grid-template-columns: repeat(2, 1fr);
+		gap:3rem;
+	} 
+	}
+	
+	@media (max-width: 768px) {
+	 .home-featured-car-container {
+		grid-template-columns: 100%;
+		gap:1rem;
+	}
+	}
+	</style>
+	
+	<section class="featured-car-section container">
+			<div class="featured-vehicle-intro">
+				<span class="subheading">What we offer</span>
+				<h2 class="heading">Choose your Car</h2>
+			</div>
+				<div class="home-featured-car-container">
+					<div class="car-item">
+						<div class="home-featured-car-img-container">
+							<img src="{% static 'images/car-1.jpg' %}" alt="car-img">
+						</div>
+						<div class="featured-car-card-body">
+							<h2 class="featured-car-name"><a href="#">Mercedes Grand Sedan</a></h2>
+							<div class="car-name_price">
+								<span class="cat">Cheverolet</span>
+								<p class="price">$500 <span>/day</span></p>
+							</div>
+							<div class="home-car-book-btns">
+								<a href="" class="book-now-btn" style="padding:1.2rem 4rem;background-color: var(--blueColor);border-radius:.2rem;color:var(--whiteColor);">Book now</a> 
+								<a href="" class="detail-btn"  style="padding:1.2rem 5rem; background-color: var(--greenColor);border-radius:.2rem;color:var(--whiteColor);">Details</a>
+							</div>
+						</div>
+					</div>
+					<div class="car-item">
+						<div class="home-featured-car-img-container">
+							<img src="{% static 'images/car-2.jpg' %}" alt="car-img">
+						</div>
+						<div class="featured-car-card-body">
+							<h2 class="featured-car-name"><a href="#">Mercedes Grand Sedan</a></h2>
+							<div class="car-name_price">
+								<span class="cat">Cheverolet</span>
+								<p class="price">$500 <span>/day</span></p>
+							</div>
+							<div class="home-car-book-btns">
+								<a href="" class="book-now-btn" style="padding:1.2rem 4rem;background-color: var(--blueColor);border-radius:.2rem;color:var(--whiteColor);">Book now</a> 
+								<a href="" class="detail-btn"  style="padding:1.2rem 5rem; background-color: var(--greenColor);border-radius:.2rem;color:var(--whiteColor);">Details</a>
+							</div>
+						</div>
+					</div>
+					<div class="car-item">
+						<div class="home-featured-car-img-container">
+							<img src="{% static 'images/car-3.jpg' %}" alt="car-img">
+						</div>
+						<div class="featured-car-card-body">
+							<h2 class="featured-car-name"><a href="#">Mercedes Grand Sedan</a></h2>
+							<div class="car-name_price">
+								<span class="cat">Cheverolet</span>
+								<p class="price">$500 <span>/day</span></p>
+							</div>
+							<div class="home-car-book-btns">
+								<a href="" class="book-now-btn" style="padding:1.2rem 4rem;background-color: var(--blueColor);border-radius:.2rem;color:var(--whiteColor);">Book now</a> 
+								<a href="" class="detail-btn"  style="padding:1.2rem 5rem; background-color: var(--greenColor);border-radius:.2rem;color:var(--whiteColor);">Details</a>
+							</div>
+						</div>
+					</div>
+					<div class="car-item">
+						<div class="home-featured-car-img-container">
+							<img src="{% static 'images/car-4.jpg' %}" alt="car-img">
+						</div>
+						<div class="featured-car-card-body">
+							<h2 class="featured-car-name"><a href="#">Mercedes Grand Sedan</a></h2>
+							<div class="car-name_price">
+								<span class="cat">Cheverolet</span>
+								<p class="price">$500 <span>/day</span></p>
+							</div>
+							<div class="home-car-book-btns">
+								<a href="" class="book-now-btn" style="padding:1.2rem 4rem;background-color: var(--blueColor);border-radius:.2rem;color:var(--whiteColor);">Book now</a> 
+								<a href="" class="detail-btn"  style="padding:1.2rem 5rem; background-color: var(--greenColor);border-radius:.2rem;color:var(--whiteColor);">Details</a>
+							</div>
+						</div>
+					</div>
+					<div class="car-item">
+						<div class="home-featured-car-img-container">
+							<img src="{% static 'images/car-5.jpg' %}" alt="car-img">
+						</div>
+						<div class="featured-car-card-body">
+							<h2 class="featured-car-name"><a href="#">Mercedes Grand Sedan</a></h2>
+							<div class="car-name_price">
+								<span class="cat">Cheverolet</span>
+								<p class="price">$500 <span>/day</span></p>
+							</div>
+							<div class="home-car-book-btns">
+								<a href="" class="book-now-btn" style="padding:1.2rem 4rem;background-color: var(--blueColor);border-radius:.2rem;color:var(--whiteColor);">Book now</a> 
+								<a href="" class="detail-btn"  style="padding:1.2rem 5rem; background-color: var(--greenColor);border-radius:.2rem;color:var(--whiteColor);">Details</a>
+							</div>
+						</div>
+					</div>
+					<div class="car-item">
+						<div class="home-featured-car-img-container">
+							<img src="{% static 'images/car-6.jpg' %}" alt="car-img">
+						</div>
+						<div class="featured-car-card-body">
+							<h2 class="featured-car-name"><a href="#">Mercedes Grand Sedan</a></h2>
+							<div class="car-name_price">
+								<span class="cat">Cheverolet</span>
+								<p class="price">$500 <span>/day</span></p>
+							</div>
+							<div class="home-car-book-btns">
+								<a href="" class="book-now-btn" style="padding:1.2rem 4rem;background-color: var(--blueColor);border-radius:.2rem;color:var(--whiteColor);">Book now</a> 
+								<a href="" class="detail-btn"  style="padding:1.2rem 5rem; background-color: var(--greenColor);border-radius:.2rem;color:var(--whiteColor);">Details</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="container" >
+					<ul class="pagination-buttons">
+					  <li><a href="#">&lt;</a></li>
+					  <li><a class="active">1</a></li>
+					  <li><a href="#">2</a></li>
+					  <li><a href="#">3</a></li>
+					  <li><a href="#">4</a></li>
+					  <li><a href="#">5</a></li>
+					  <li><a href="#">&gt;</a></li>
+					</ul>
+				</div>
+	</section>
+	<!--Home-featured cars ENDS-->
 {% endblock %}

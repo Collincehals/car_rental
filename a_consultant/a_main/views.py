@@ -14,6 +14,9 @@ def services(request):
 def projects(request):
     return render(request, 'a_main/services.html')
 
+def cars(request):
+    return render(request, 'a_main/car.html')
+
 def project_page(request):
     return render(request, 'a_main/car_single.html')
 
