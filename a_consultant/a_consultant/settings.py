@@ -35,7 +35,7 @@ if ENVIRONMENT == 'development':
 else:
     DEBUG = False
     
-ALLOWED_HOSTS = ['car-rental-vl50.onrender.com',
+ALLOWED_HOSTS = ['car-rental-xr4f.onrender.com',
                  '127.0.0.1']
 INTERNAL_IPS = ('127.0.0.1','localhost:8000')
 
