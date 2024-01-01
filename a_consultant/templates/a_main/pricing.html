@@ -156,6 +156,9 @@ table {
 	align-items: center;
 	z-index: 20;
 }
+.mobile-rent-button {
+	display:none;
+	}
 @media (max-width:768px) {
 	.pricing-table-wrap {
 		overflow-x: auto;
@@ -163,6 +166,19 @@ table {
 	}
 	.pricing-table-wrap::-webkit-scrollbar {
 		display:none;
+	}
+	.mobile-rent-button {
+		display:block;
+		padding:1rem 2rem;
+		background:var(--blueColor);
+		color:var(--whiteColor);
+		border-radius:.2rem;
+	}
+	.mobile-rent-button a {
+		color:var(--whiteColor);
+	}
+	.table .price:hover .button-rent-overlay {
+		display: none;
 	}
 }
 </style>
@@ -200,13 +216,14 @@ table {
 				</td>
 				
 				<td class="price">
-					<p class="button-rent-overlay"><a class="button" href="#">Rent a car</a></p>
+					<p class="button-rent-overlay"><a class="button" href="#">Rent</a></p>
 					<div class="price-rate">
 						<h3>
 							<span class="num"><small class="currency">$</small> 10.99</span>
 							<span class="per">/per hour</span>
 						</h3>
 						<span class="subheading">$3/hour fuel surcharges</span>
+						<p class="mobile-rent-button"><a href="#">Rent</a></p>
 					</div>
 				</td>
 				
@@ -218,6 +235,7 @@ table {
 							<span class="per">/per day</span>
 						</h3>
 						<span class="subheading">$3/hour fuel surcharges</span>
+						<p class="mobile-rent-button"><a href="#">Rent</a></p>
 					</div>
 				</td>
 
@@ -229,6 +247,7 @@ table {
 							<span class="per">/per month</span>
 						</h3>
 						<span class="subheading">$3/hour fuel surcharges</span>
+						<p class="mobile-rent-button"><a href="#">Rent</a></p>
 					</div>
 				</td>
 				</tr><!-- END TR-->
@@ -255,6 +274,7 @@ table {
 							<span class="per">/per hour</span>
 						</h3>
 						<span class="subheading">$3/hour fuel surcharges</span>
+						<p class="mobile-rent-button"><a href="#">Rent</a></p>
 					</div>
 				</td>
 				
@@ -266,6 +286,7 @@ table {
 							<span class="per">/per day</span>
 						</h3>
 						<span class="subheading">$3/hour fuel surcharges</span>
+						<p class="mobile-rent-button"><a href="#">Rent</a></p>
 					</div>
 				</td>
 
@@ -277,6 +298,7 @@ table {
 							<span class="per">/per month</span>
 						</h3>
 						<span class="subheading">$3/hour fuel surcharges</span>
+						<p class="mobile-rent-button"><a href="#">Rent</a></p>
 					</div>
 				</td>
 				</tr><!-- END TR-->
@@ -303,6 +325,7 @@ table {
 							<span class="per">/per hour</span>
 						</h3>
 						<span class="subheading">$3/hour fuel surcharges</span>
+						<p class="mobile-rent-button"><a href="#">Rent</a></p>
 					</div>
 				</td>
 				
@@ -314,6 +337,7 @@ table {
 							<span class="per">/per day</span>
 						</h3>
 						<span class="subheading">$3/hour fuel surcharges</span>
+						<p class="mobile-rent-button"><a href="#">Rent</a></p>
 					</div>
 				</td>
 
@@ -325,6 +349,7 @@ table {
 							<span class="per">/per month</span>
 						</h3>
 						<span class="subheading">$3/hour fuel surcharges</span>
+						<p class="mobile-rent-button"><a href="#">Rent</a></p>
 					</div>
 				</td>
 				</tr><!-- END TR-->
@@ -351,6 +376,7 @@ table {
 							<span class="per">/per hour</span>
 						</h3>
 						<span class="subheading">$3/hour fuel surcharges</span>
+						<p class="mobile-rent-button"><a href="#">Rent</a></p>
 					</div>
 				</td>
 				
@@ -362,6 +388,7 @@ table {
 							<span class="per">/per day</span>
 						</h3>
 						<span class="subheading">$3/hour fuel surcharges</span>
+						<p class="mobile-rent-button"><a href="#">Rent</a></p>
 					</div>
 				</td>
 
@@ -373,6 +400,7 @@ table {
 							<span class="per">/per month</span>
 						</h3>
 						<span class="subheading">$3/hour fuel surcharges</span>
+						<p class="mobile-rent-button"><a href="#">Rent</a></p>
 					</div>
 				</td>
 				</tr><!-- END TR-->
@@ -400,6 +428,7 @@ table {
 							<span class="per">/per hour</span>
 						</h3>
 						<span class="subheading">$3/hour fuel surcharges</span>
+						<p class="mobile-rent-button"><a href="#">Rent</a></p>
 					</div>
 				</td>
 				
@@ -411,6 +440,7 @@ table {
 							<span class="per">/per day</span>
 						</h3>
 						<span class="subheading">$3/hour fuel surcharges</span>
+						<p class="mobile-rent-button"><a href="#">Rent</a></p>
 					</div>
 				</td>
 
@@ -422,6 +452,7 @@ table {
 							<span class="per">/per month</span>
 						</h3>
 						<span class="subheading">$3/hour fuel surcharges</span>
+						<p class="mobile-rent-button"><a href="#">Rent</a></p>
 					</div>
 				</td>
 				</tr><!-- END TR-->
@@ -449,6 +480,7 @@ table {
 							<span class="per">/per hour</span>
 						</h3>
 						<span class="subheading">$3/hour fuel surcharges</span>
+						<p class="mobile-rent-button"><a href="#">Rent</a></p>
 					</div>
 				</td>
 				
@@ -460,6 +492,7 @@ table {
 							<span class="per">/per day</span>
 						</h3>
 						<span class="subheading">$3/hour fuel surcharges</span>
+						<p class="mobile-rent-button"><a href="#">Rent</a></p>
 					</div>
 				</td>
 
@@ -471,6 +504,7 @@ table {
 							<span class="per">/per month</span>
 						</h3>
 						<span class="subheading">$3/hour fuel surcharges</span>
+						<p class="mobile-rent-button"><a href="#">Rent</a></p>
 					</div>
 				</td>
 				</tr><!-- END TR-->
