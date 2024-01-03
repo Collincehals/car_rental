@@ -4,40 +4,51 @@
 
 {% block layout %}
 <style>
-	.cars-hero-wrap {
-	 background-image: url("{% static 'images/bg_3.jpg' %}");
-	 position: relative; 
-	 background-size: cover;
-	 background-repeat: no-repeat;
-	 height: 100vh;
+	body {
+		background-image: url("{% static 'images/bg_3.jpg' %}");
+		background-size: cover;
+		background-repeat: no-repeat;
+		height: 100vh;
+   }
+   body::after {
+		content:'';
+		position: absolute;
+		left:0;
+		top:0;
+		width:100%;
+		height: 100vh;
+		z-index: -30;
+		background-color: rgba(0,0,0,.7);
    }
 </style>
-	<section class="cars-hero-wrap" >
-		<div class="breadcrumb-animate">
-		<p class="breadcrumbs"><span class="home-page"><a href="{% url 'home' %}">Home <i class="fa-solid fa-chevron-right chevron"></i></a></span> <span>Blog<i class="fa-solid fa-chevron-right chevron"></i></span></p>
-		<h1 class="bread">Choose Your Car</h1>
-		</div>
-	</section>
-
-		<!--Home-featured cars STARTS-->
+	
+<!--cars STARTS-->
 <style>
-	.featured-vehicle-intro {
+	.cars-container {
+		margin-top:1.5rem;
+		background: #ffffff;
+		padding:1rem;
+		
+	}
+	.car-intro {
 		text-align: center;
 		line-height:3rem;
-		margin-bottom:3rem;
+		margin-bottom:1rem;
+		margin-top:2rem;
 	}
-	.featured-vehicle-intro .subheading {
+	.car-intro .subheading {
 		text-transform: uppercase;
 		font-weight: 600;
 		color:var(--blueColor);
 		font-size: 1.5rem;
-		padding-bottom:2rem;
+		padding-bottom:1rem;
 		}
-	.featured-vehicle-intro .heading {
+	.car-intro .heading {
 		font-size: 3rem;
 		padding-bottom: 1rem;
+		color:var(--blueColor);
 	}
-	.home-featured-car-container {
+	.car-container {
 		display:grid;
 		grid-template-columns: repeat(3, 1fr);
 		gap:3rem;
@@ -47,28 +58,28 @@
 		border:.01rem solid #ccc;
 		border-radius: .5rem;
 	}
-	.car-item .home-featured-car-img-container {
+	.car-item .car-image-container {
 		width:100%;
 		height:25rem;
 		overflow: hidden;
 	}
-	.car-item .home-featured-car-img-container img {
+	.car-item .car-image-container img {
 		width:100%;
 		height:100%;
 		object-fit: cover;
 		object-position: center;
 		border-radius: .5rem;
 	}
-	.car-item .home-featured-car-img-container img:hover {
+	.car-item .car-image-container img:hover {
 		transform:scale(1.1);
 	
 	}
-	.featured-car-card-body {
+	.car-card-body {
 		padding:2rem;
 		font-size: 1.7rem;
 	}
 	
-	.featured-car-name a {
+	.car-name a {
 		color:var(--blackColor);
 		font-weight: 600;
 		font-size:2.1rem;
@@ -102,21 +113,26 @@
 		gap:1rem;
 	}
 
-		.pagination-buttons {
+	.pagination-buttons {
 		display:flex;
 		flex-wrap: wrap;
 		gap:1.5rem;
 		justify-content: center;
 		align-items: center;
 		padding-bottom: 1rem;
+		margin-bottom:2rem;
+	}
+	.pagination-buttons .current {
+		color:var(--blueColor);
+		font-size:1.5rem;
+		font-weight:600;
 	}
 
 	.pagination-buttons>li a {
 		color:var(--blueColor);
 		font-size:1.5rem;
-		border-radius: 50%;
-		padding:1rem 1.5rem;
-		border:.01rem solid #ccc;
+		padding:1.2rem;
+		border:.1rem solid #ccc;
 		background-color:var(--whiteColor);
 		cursor:pointer;
 	}
@@ -132,12 +148,11 @@
 	.categories-container {
 		display:flex;
 		flex-wrap: wrap;
-		justify-content: flex-start;
-		align-items: center;
+		justify-content: center;
 		gap:2rem;
-		margin-bottom:1rem;
 		font-size:1.8rem;
 		color:var(--blueColor);
+		margin-bottom: 2rem;
 	}
 	.categories-container li {
 		padding:1rem 2rem;
@@ -146,69 +161,79 @@
 		font-size:1.8rem;
 		color:var(--whiteColor);
 	}
+	.categories-container li a {
+		color:var(--whiteColor);
+	}
 	@media (min-width: 768px) and (max-width:1024px){
-	 .home-featured-car-container {
+	 .car-container {
 		grid-template-columns: repeat(2, 1fr);
 		gap:3rem;
 	} 
 	}
 	
 	@media (max-width: 768px) {
-	 .home-featured-car-container {
+	 .car-container {
 		grid-template-columns: 100%;
 		gap:1rem;
 	}
 	}
 	</style>
 	
-	<section class="featured-car-section container">
-			<div class="featured-vehicle-intro">
+	<section class="container">
+		<div class="cars-container">
+			<div class="car-intro">
 				<span class="subheading">What we offer</span>
 				<h2 class="heading">Choose your Car</h2>
 			</div>
-			
-			<div class="container">
 				<ul class="categories-container">
 					{% for category in categories %}
-					<li>{{category}}</li>
+					<li><a href="{% url 'category_page' category.slug %}">{{category}}</a></li>
 					{% endfor %}
 				</ul>
-			</div>
-				<div class="home-featured-car-container">
-					{% for car in cars %}
+		
+				<div class="car-container">
+					{% for car in page %}
 					<div class="car-item">
-						<div class="home-featured-car-img-container">
+						<div class="car-image-container">
 							<img src="{{ car.image.url }}" alt="car-img">
 						</div>
-						<div class="featured-car-card-body">
-							{% for brand in car.brands.all %}
-							{% if brand.slug == car.brands.slug %}
-							<h2 class="featured-car-name"><a href="#">{{brand.slug}}</a></h2>
-							{% endif %}
+						<div class="car-card-body">
+							{% for brand in car.brand.all %}
+							<h2 class="car-name"><a href="{% url 'category_page' brand.slug %}">{{brand}}</a></h2>
 							{% endfor %}
 							<div class="car-name_price">
 								<span class="cat">{{car.name}}</span>
+								{% if request.user == car.owner or is_superuser %}
+								<p class="price"><a href="{% url 'delete_car' car.id %}">Delete</a></p>
+								{% endif %}
 								<p class="price">${{car.hire_rate}} <span>/day</span></p>
 							</div>
 							<div class="home-car-book-btns">
 								<a href="" class="book-now-btn" style="padding:1.2rem 4rem;background-color: var(--blueColor);border-radius:.2rem;color:var(--whiteColor);">Book now</a> 
-								<a href="" class="detail-btn"  style="padding:1.2rem 5rem; background-color: var(--greenColor);border-radius:.2rem;color:var(--whiteColor);">Details</a>
+								<a href="{% url 'car-details' car.id %}" class="detail-btn"  style="padding:1.2rem 5rem; background-color: var(--greenColor);border-radius:.2rem;color:var(--whiteColor);">Details</a>
 							</div>
 						</div>
 					</div>
 					{% endfor %}
 				</div>
-				<div class="container" >
+				<div class="container">
 					<ul class="pagination-buttons">
-					  <li><a href="#">&lt;</a></li>
-					  <li><a class="active">1</a></li>
-					  <li><a href="#">2</a></li>
-					  <li><a href="#">3</a></li>
-					  <li><a href="#">4</a></li>
-					  <li><a href="#">5</a></li>
-					  <li><a href="#">&gt;</a></li>
+						{% if page.has_previous %}
+							<li><a href="?page=1">&laquo; first</a></li>
+							<li><a href="?page={{ page.previous_page_number }}"><i class="fa-solid fa-arrow-left-long"></i></a></li>
+						{% endif %}
+			
+						<li class="current">
+							Page {{ page.number }} of {{ page.paginator.num_pages }}.
+						</li>
+					
+						{% if page.has_next %}
+							<li><a href="?page={{ page.next_page_number }}"><i class="fa-solid fa-arrow-right-long"></i></a></li>
+							<li><a href="?page={{ page.paginator.num_pages }}">last &raquo;</a></li>
+						{% endif %}
 					</ul>
 				</div>
+			</div>
 	</section>
-	<!--Home-featured cars ENDS-->
+	<!--cars ENDS-->
 {% endblock %}

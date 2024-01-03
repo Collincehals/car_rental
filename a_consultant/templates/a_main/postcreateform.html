@@ -4,26 +4,36 @@
 
 {% block layout %}
 <style>
+    body {
+        background-color: rgb(164, 157, 157);
+    }
     form {
         max-width: 60rem;
-        margin:2rem auto;
+        margin:5rem auto;
         width: 100%;
         padding:2rem;
         background:rgba(241,240,253);
         box-shadow: var(--boxShadow);
-        margin-bottom:1rem;
         font-size:1.5rem;
         color:var(--blackColor);
+        border-radius: .8em;
+        box-sizing: border-box;
     }
     form p {
         display: flex;
-       
+        align-items: center;
+        margin-bottom:1rem;
+        justify-content: flex-start;
     }
 
     form label {
-        margin-right:7rem;
+       margin-right:6rem;
     }
-
+    form h2 {
+        font-size:2.4rem;
+        color:var(--blueColor);
+        padding:1rem 0;
+    }
     form input {
         padding:1.2rem;
         font-size:1.5rem;
@@ -37,34 +47,13 @@
         width:100%;
         resize: vertical;
     }
-
-	@media (min-width: 768px) and (max-width:1024px){
-	 .home-featured-car-container {
-		grid-template-columns: repeat(2, 1fr);
-		gap:3rem;
-	} 
-	}
-	
-	@media (max-width: 768px) {
-	 .home-featured-car-container {
-		grid-template-columns: 100%;
-		gap:1rem;
-	}
-	}
 	</style>
-	
-	<section class="container">
-			<div class="featured-vehicle-intro">
-				<span class="subheading">What we offer</span>
-				<h2 class="heading">Choose your Car</h2>
-			</div>
 			<div class="container">
 				<form method="POST" enctype="multipart/form-data">
+                    <h2>Post a Car for Hire</h2>
 					{% csrf_token %}
-					{{carpostform}}
+					{{carpostform.as_p}}
 					<button type="submit" class="button">Post</button>
 				</form>
 			</div>
-	</section>
-	<!--Home-featured cars ENDS-->
 {% endblock %}

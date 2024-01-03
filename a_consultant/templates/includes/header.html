@@ -252,8 +252,14 @@ html {
         
         <li class="nav-item"><a href="{% url 'blog' %}" class="nav-link">Blog</a></li>
         <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+        {% if user.is_authenticated %}
+        <h4 style="color:darkorange;font-size: 1.7rem;font-weight:600;">{{user|title}}</h4>
+        <li class="nav-item"><a href="{% url 'account_logout' %}" class="nav-link">Logout</a></li>
+        {% else %}
+        <li class="nav-item"><a href="{% url 'account_login' %}" class="nav-link">Login</a></li>
+        {% endif %}
         <!--
-        <li class="nav-item"><a href="{% url 'projects' %}" class="nav-link">Projects</a></li>
+        
         <li class="nav-item"><a href="{% url 'careers' %}" class="nav-link">Careers</a></li>-->
       </ul>
     </nav>

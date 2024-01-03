@@ -1,0 +1,12 @@
+{% extends 'allauth/layouts/base.html' %}
+{% block title_head %} Post Car {% endblock title_head %}
+{% load static %}
+
+{% block content %}
+    <form method="POST">
+        <p >Are you sure you want to delete this post?</p>
+        {% csrf_token %}
+        <button type="submit" class="button">Confirm</button>
+        <a href="{{request.META.HTTP_REFERER}}" class="button">Abort</a>
+    </form>
+{% endblock %}

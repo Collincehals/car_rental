@@ -1,0 +1,194 @@
+{% extends 'a_main/base.html' %}
+{% load i18n %}
+{% block head_title %} Accounts {% endblock head_title %}
+{% load static %}
+
+
+{% block layout %}
+<style>
+    body {
+        background-image: url("{% static 'images/bg_1.jpg' %}");
+        background-position: center center;
+        background-size: cover;
+        background-repeat: repeat;
+        height:100vh;
+        z-index:-20;
+    }
+    body::after {
+        content: '';
+        position: absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: -20;
+    }
+
+    * {
+        box-sizing: border-box;
+        outline:none;
+        border:none;
+    }
+    
+    ol, ul {
+        list-style-type: none;
+    }
+    h1 {
+        font-size:3rem;
+        font-weight: bold;
+        color:darkblue;
+        text-align:  center;
+        padding-bottom:2rem;
+    }
+
+    .form-card {
+        max-width:60rem;
+        font-size: 1.6rem;
+        width:100%;
+        margin:10rem auto;
+        padding:2rem;
+        background:rgb(241,240,253);
+        border-radius:.2rem;
+        border:.05rem solid #ccc;
+        box-shadow:0 0 .05rem 0 rgba(0,0,0,.3);
+        z-index:1000;
+    }
+
+    button {
+        padding:1rem 1.5rem;
+        font-size:1.5rem;
+        font-weight:bold;
+        color:#fff;
+        border:none;
+        border-radius:.5rem;
+        cursor:pointer;
+        background:darkblue;
+        margin:.5rem auto;
+        text-decoration:none;
+        }        
+        button:hover {
+        box-shadow: 0 0 0 .01rem, rgb(49, 100, 49);
+        transition:scale(1.1);
+        background-color:rgb(49, 100, 49);
+        }
+
+        .submitbtn {
+        padding:1rem 1.5rem;
+        font-size:1.5rem;
+        font-weight:bold;
+        color:#fff;
+        border:none;
+        border-radius:.5rem;
+        cursor:pointer;
+        background:darkblue;
+        margin:.5rem auto;
+        text-decoration:none;
+        }
+        .submitbtn:hover {
+        box-shadow: 0 0 0 0.1rem rgb(49, 100, 49);
+        transition:scale(1.1);
+        background-color:rgb(49, 100, 49);
+        }
+      
+        /* MORE DJANGO-ALLAUTH FORM STYLING*/
+        p {
+            margin-bottom:1.5rem;
+        }
+        form p {
+        margin-bottom:1.5rem;
+        display:flex;
+        align-items:center;
+        }
+
+        form p label {
+            width: 8rem;
+        }
+
+        label {
+            margin: 0.6rem 0 .3rem;
+            font-size: 1.5rem;
+        }
+        input, textarea {
+            width: 100%;
+            font-size: 1.6rem;
+        }
+        input[type="file"], select {
+            background-color: none;
+            padding-left: 0;
+        }
+        label[for="id_remember"] {
+            width: auto;
+            margin-right: 0.5rem;
+        }
+        input[name="remember"] {
+            width: auto;
+            vertical-align: auto;
+        }
+    
+        .textarea, textarea {
+            margin-bottom: 1rem;
+        }
+        textarea, input {
+            border-radius: 0.5rem;
+            padding: 1.2rem 1.2rem;
+            outline:none;
+        }
+
+        .textarea:focus, textarea:focus, input:focus {
+            border:.02rem solid rgba(23, 65, 215, 0.5);
+        }
+        
+        .errorlist li {
+            color: rgb(231, 59, 21);
+            text-decoration: none;
+            padding: 0.5rem;
+            padding-left: 1rem;
+            border-left: 5px solid rgb(212, 54, 19);
+            margin-bottom: 1rem;
+        }
+
+        #id_tags {
+            margin-bottom: 1rem;
+        }
+        #id_tags div {
+            display:inline-block;
+            gap:2rem; 
+        }
+        #id_tags div label {
+            border-radius: 9999px;
+            padding: 0.5rem 1rem;
+            border: .1rem solid #ccc;
+            width: auto;
+            cursor: pointer;
+            user-select: none;
+        }
+        #id_tags input {
+            display: none;
+        }
+        #id_tags label:has(input:checked) {
+            background-color:black;
+            color: white;
+            border: .1rem solid black;
+        }
+
+    
+        .post-form-title {
+            font-size:2.8rem;
+            font-weight:700;
+            padding-bottom:1rem;
+            text-align: center;
+            color:darkblue;
+            }
+    @media (max-width: 300px) {
+        form p {
+                display:block;
+            }
+    }
+</style>
+<div class="form-card">
+    {% block content %}
+
+    {% endblock content %}
+</div>
+{% endblock %}

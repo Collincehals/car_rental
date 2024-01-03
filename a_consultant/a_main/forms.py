@@ -18,3 +18,14 @@ class CarPostForm(ModelForm):
             'description': forms.Textarea(attrs={'rows':3}),
             'brand' : forms.CheckboxSelectMultiple()
         }
+
+class TripBookingForm(ModelForm):
+    class Meta:
+        model = TripBooking
+        exclude = ['user', 'booking_number', ]
+        
+        widgets = {
+            'pick_up_date': forms.SelectDateWidget(),
+            'drop_off_date': forms.SelectDateWidget(),
+            'pick_up_time': forms.TimeInput(),
+        }

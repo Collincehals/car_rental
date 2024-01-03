@@ -119,7 +119,8 @@ body {
  .services-hero-wrap::after,
  .about-bg3::after,
  .services-bg3::after,
- .cars-hero-wrap::after {
+ .cars-hero-wrap::after,
+ .car_details-hero-wrap::after {
     content: "";
     position: absolute;
     top: 0;
