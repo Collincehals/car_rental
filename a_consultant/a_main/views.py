@@ -8,15 +8,19 @@ from .models import *
 from .forms import *
 
 def home(request):
-    tripbookingform = TripBookingForm()
-    if request.method == 'POST':
-        form = TripBookingForm(request.POST)
-        if form.is_valid():
-            booked_trip = form.save(commit=False)
-            booked_trip.user = request.user
-            booked_trip.save()
-            messages.success(request, 'Your trip has been booked!')
-            return redirect('home')
+    if request.user.is_authenticated:
+        tripbookingform = TripBookingForm()
+        if request.method == 'POST':
+            form = TripBookingForm(request.POST)
+            if form.is_valid():
+                booked_trip = form.save(commit=False)
+                booked_trip.user = request.user
+                booked_trip.save()
+                messages.success(request, 'Your trip has been booked!')
+                return redirect('home')
+    else:
+        tripbookingform = TripBookingForm()
+        
     featured_cars = Car.objects.all()
     cars_total= Car.objects.all().count()
    
