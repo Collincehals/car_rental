@@ -6,8 +6,18 @@
 {% endblock head_title %}
 {% block content %}
 <style>
+    form {
+        padding:2rem;
+    }
     form p label {
+        line-height: 3rem;
+        display: none;
         margin-bottom:2rem;
+    }
+    label[for="id_remember"] {
+        display:inline-block;
+        width: auto;
+        margin-right: 0.5rem;
     }
     form p {
         display: block;
@@ -17,13 +27,14 @@
     {% element h1 %}
         {% trans "Sign In" %}
     {% endelement %}
-    <p>
-        {% blocktrans %}If you have not created an account yet, then please
-    <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
-    </p>
+    
     {% url 'account_login' as login_url %}
     {% element form form=form method="post" action=login_url tags="entrance,login" %}
         {% slot body %}
+        <p>
+            {% blocktrans %}If you have not created an account yet, then please
+        <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
+        </p>
             {% csrf_token %}
             {% element fields form=form unlabeled=True %}
             {% endelement %}

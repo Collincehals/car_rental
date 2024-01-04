@@ -51,6 +51,8 @@ class TripBooking(models.Model):
         ('Kiambu', 'Kiambu'),
         ('Mombasa', 'Mombasa'),
         ('Kisumu', 'Kisumu'),
+        ('Kericho', 'Kericho'),
+        ('Bungoma', 'Bungoma'),
     ]
     
     DROP_OFF_LOCATION_CHOICES = [
@@ -59,6 +61,8 @@ class TripBooking(models.Model):
         ('Kiambu', 'Kiambu'),
         ('Mombasa', 'Mombasa'),
         ('Kisumu', 'Kisumu'),
+        ('Kericho', 'Kericho'),
+        ('Bungoma', 'Bungoma'),
     ]
     
     user = models.ForeignKey(User, on_delete=models.CASCADE)
