@@ -35,7 +35,7 @@
         list-style-type: none;
     }
     h1 {
-        font-size:3rem;
+        font-size:2.4rem;
         font-weight: bold;
         color:darkblue;
         text-align:  center;
@@ -96,26 +96,35 @@
             margin-bottom:1.5rem;
         }
         form p {
-        margin-bottom:1.5rem;
-        display:flex;
-        align-items:center;
+            margin-bottom:2rem;
+            display:flex;
+            align-items:center;
         }
 
         form p label {
-            width: 8rem;
+            width: 12rem;
+           
         }
 
         label {
             margin: 0.6rem 0 .3rem;
             font-size: 1.5rem;
+            
         }
         input, textarea {
             width: 100%;
             font-size: 1.6rem;
         }
-        input[type="file"], select {
+        input[type="file"] {
+            background-color: transparent;
+            padding-left: 0;
+        }
+
+        select {
             background-color: none;
             padding-left: 0;
+            width:100%;
+            padding:1.2rem;
         }
         label[for="id_remember"] {
             width: auto;
@@ -148,25 +157,26 @@
             margin-bottom: 1rem;
         }
 
-        #id_tags {
-            margin-bottom: 1rem;
+        #id_brand {
+            margin-bottom: 1.5rem;
         }
-        #id_tags div {
+        #id_brand div {
             display:inline-block;
-            gap:2rem; 
+            gap:2.5rem; 
         }
-        #id_tags div label {
+        #id_brand div label {
             border-radius: 9999px;
-            padding: 0.5rem 1rem;
+            padding: 0.7rem 1.5rem;
             border: .1rem solid #ccc;
             width: auto;
             cursor: pointer;
             user-select: none;
+            margin-right: 1rem;
         }
-        #id_tags input {
+        #id_brand input {
             display: none;
         }
-        #id_tags label:has(input:checked) {
+        #id_brand label:has(input:checked) {
             background-color:black;
             color: white;
             border: .1rem solid black;

@@ -5,13 +5,13 @@ from .models import *
 class CarPostForm(ModelForm):
     class Meta:
         model = Car
-        fields = ['name', 'brand', 'hire_rate', 'image', 'description']
+        exclude = ['owner', 'id']
         
         labels = {
             'name': 'Name',
-            'hire_rate': 'Rate',
+            'hire_rate_hour': 'Rate/Hour',
+            'hire_rate_day': 'Rate/Day',
             'image': 'Upload Image',
-            'description': 'Specification',
         }
         
         widgets = {
@@ -25,7 +25,18 @@ class TripBookingForm(ModelForm):
         exclude = ['user', 'booking_number', ]
         
         widgets = {
-            'pick_up_date': forms.SelectDateWidget(),
-            'drop_off_date': forms.SelectDateWidget(),
-            'pick_up_time': forms.TimeInput(),
+            'pick_up_date': forms.DateInput(attrs={'type': 'date'}),
+            'drop_off_date': forms.DateInput(attrs={'type': 'date'}),
+           'pick_up_time': forms.TimeInput(attrs={'type': 'time'}),
+        }
+
+class CarRentalForm(ModelForm):
+    class Meta:
+        model = CarRental
+        exclude = ['customer', 'renting_id','status' ]
+        
+        widgets = {
+            'rental_start_date': forms.DateInput(attrs={'type': 'date'}),
+            'rental_end_date': forms.DateInput(attrs={'type': 'date'}),
+            'pick_up_time': forms.TimeInput(attrs={'type': 'time'}),
         }

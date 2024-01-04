@@ -22,7 +22,7 @@
 	}
 	.car-details-container {
 		display:grid;
-		grid-template-columns: 2fr 3fr;
+		grid-template-columns: 1fr 1fr;
 		gap:2rem;
 	}
 	.detailed-car-img-wrap {
@@ -36,7 +36,7 @@
 	.detailed-car-img-wrap img {
 		width:100%;
 		height: 100%;
-		object-fit: cover;
+		object-fit: contain;
 		border-radius: .7rem;
 	}
 	.all-details-wrapper {
@@ -125,7 +125,7 @@
 						<div class="text">
 							<h3 class="heading mb-0 pl-3">
 								Mileage:
-								<span>{{car_to_view.hire_rate}}</span>
+								<span>{{car_to_view.mileage}}</span>
 							</h3>
 						</div>
 					</div>
@@ -134,7 +134,7 @@
 						<div class="text">
 							<h3 class="heading mb-0 pl-3">
 								Transmission:
-								<span>Manual</span>
+								<span>{{car_to_view.transmission}}</span>
 							</h3>
 						</div>
 					</div>
@@ -143,7 +143,7 @@
 						<div class="text">
 							<h3 class="heading mb-0 pl-3">
 								Seats:
-								<span>5 Adults</span>
+								<span>{{car_to_view.seats}} Adults</span>
 							</h3>
 						</div>
 					</div>
@@ -152,7 +152,7 @@
 						<div class="text">
 							<h3 class="heading mb-0 pl-3">
 								Luggage:
-								<span>4 Bags</span>
+								<span>{{car_to_view.luggage}} Bags</span>
 							</h3>
 						</div>
 					</div>
@@ -161,12 +161,16 @@
 						<div class="text">
 							<h3 class="heading mb-0 pl-3">
 								Fuel:
-								<span>Petrol</span>
+								<span>{{car_to_view.fuel}}</span>
 							</h3>
 						</div>
 					</div>
 				</div>
-				<a href="" class="button" >BOOK NOW</a>
+				<div style="display:flex;gap:2rem; justify-content: space-between;align-items: center;flex-wrap:wrap;">
+					<a href="{% url 'rent_car' %}" class="button" >BOOK NOW</a>
+					<a href="{% url 'bookmark' car_to_view.id %}" class="detail-btn"  style="padding:1.2rem 5rem; background-color: var(--greenColor);border-radius:.2rem;color:var(--whiteColor);font-size:1.7rem;">Save</a>
+				</div>
+				
 			</div>
 			
 	</div>

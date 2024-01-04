@@ -1,0 +1,13 @@
+{% extends 'allauth/layouts/base.html' %}
+{% block title_head %} Rent Car {% endblock title_head %}
+{% load static %}
+
+{% block content %}
+<form method="POST">
+    <h1>Proceed with Renting {{car_to_rent.name}}</h1>
+    {% csrf_token %}
+    {{car_rent_form.as_p}}
+    <button type="submit" class="button">Confirm</button>
+</form>
+	
+{% endblock %}

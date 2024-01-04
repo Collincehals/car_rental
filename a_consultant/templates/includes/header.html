@@ -34,7 +34,7 @@ html {
     top:0;
     left:0;
     width:100%;
-    padding:2.5rem;
+    padding:2rem;
     z-index: 600;
 
   }
@@ -51,7 +51,7 @@ html {
     top:0;
     left:0;
     width:100%;
-    padding:2.5rem;
+    padding:2rem;
     z-index: 500;
 
   }
@@ -78,8 +78,8 @@ html {
   .nav ul li a {
     color:var(--whiteColor);
     font-size: 1.7rem;
-    padding-top:3rem;
-    padding-bottom:3rem;
+    padding-top:2rem;
+    padding-bottom:2rem;
     padding-right:3rem;
   }
   .nav .nav-item.active a{
@@ -255,12 +255,10 @@ html {
         {% if user.is_authenticated %}
         <h4 style="color:darkorange;font-size: 1.7rem;font-weight:600;">{{user|title}}</h4>
         <li class="nav-item"><a href="{% url 'account_logout' %}" class="nav-link">Logout</a></li>
+        <li class="nav-item"><a href="{% url 'bookmark_view' %}" class="nav-link">{{bookmarks_count}}<i style="color:darkorange;padding-left:.5rem;" class="fa-solid fa-heart"></i></a></li>
         {% else %}
         <li class="nav-item"><a href="{% url 'account_login' %}" class="nav-link">Login</a></li>
         {% endif %}
-        <!--
-        
-        <li class="nav-item"><a href="{% url 'careers' %}" class="nav-link">Careers</a></li>-->
       </ul>
     </nav>
     <i class="fa-solid fa-bars menubars" ></i>

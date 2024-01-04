@@ -83,7 +83,7 @@
 				</div>
 			</a>
 		</div>
-		</div>
+	</div>
 </div>
 
 
@@ -156,6 +156,18 @@
 		opacity:60%;
 		font-weight: 200;
 	}
+
+	select {
+		font-family:Arial, Helvetica, sans-serif;
+		color:var(--whiteColor);
+		background-color: var(--blueColor);
+		width:100%;
+		border:.01rem solid rgba(171, 172, 195,.2);
+		font-size:1.4rem;
+		padding:1rem;
+		margin-bottom:1rem;
+		border-radius: .5rem;
+    }
 	
 	.booking-services-wrap {
 		background:rgba(241, 240, 255,0.9);
@@ -223,7 +235,7 @@
 	<div class="container">
 		<div class="booking-container">
 			<div class="booking-services-form-container">
-				<form method="POST" action="{% url 'book_trip' %}" class="request-form">
+				<form method="POST" class="request-form">
 					<h2>Make your trip</h2>
 					{% csrf_token %}
 					{{tripbookingform}}
@@ -392,10 +404,11 @@
 							{% if request.user == featured_car.owner or is_superuser %}
 							<p class="price"><a href="{% url 'delete_car' featured_car.id %}">Delete</a></p>
 							{% endif %}
-							<p class="price">${{featured_car.hire_rate}} <span>/day</span></p>
+							<p class="price"><a href="{% url 'bookmark' featured_car.id %}"><i class="fa-solid fa-heart"></i></a></p>
+							<p class="price">${{featured_car.hire_rate_day}} <span>/day</span></p>
 						</div>
 						<div class="home-car-book-btns">
-							<a href="" class="book-now-btn" style="padding:1.2rem 4rem;background-color: var(--blueColor);border-radius:.2rem;color:var(--whiteColor);">Book now</a> 
+							<a href="{% url 'rent_car' %}" class="book-now-btn" style="padding:1.2rem 4rem;background-color: var(--blueColor);border-radius:.2rem;color:var(--whiteColor);">Book now</a> 
 							<a href="{% url 'car-details' featured_car.id %}" class="detail-btn"  style="padding:1.2rem 5rem; background-color: var(--greenColor);border-radius:.2rem;color:var(--whiteColor);">Details</a>
 						</div>
 					</div>
@@ -812,7 +825,7 @@
 	  <div class="counter-2">
 		<div class="block-18">
 		  <div class="counter-items">
-			<strong class="number" data-number="1090">1090</strong>
+			<strong class="number" data-number="1090">{{cars_total}}</strong>
 			<span>Total <br>Cars</span>
 		  </div>
 		</div>

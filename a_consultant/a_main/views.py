@@ -18,9 +18,17 @@ def home(request):
             messages.success(request, 'Your trip has been booked!')
             return redirect('home')
     featured_cars = Car.objects.all()
+    cars_total= Car.objects.all().count()
+   
+    if request.user.is_authenticated:
+        bookmarks_count = Bookmark.objects.filter(customer=request.user).count()
+    else:
+        bookmarks_count = []   
     context = {
         'tripbookingform': tripbookingform,
-        'featured_cars': featured_cars
+        'featured_cars': featured_cars,
+        'cars_total': cars_total,
+        'bookmarks_count': bookmarks_count,
     }
     return render(request, 'a_main/home.html', context)
 
@@ -113,8 +121,64 @@ def blog(request):
     return render(request, 'a_main/blog.html')
 
 def pricing(request):
-    return render(request, 'a_main/pricing.html')
+    car_list = Car.objects.all()
+    paginator = Paginator(car_list, 4)
+    page_number = request.GET.get('page')
+    page = paginator.get_page(page_number)
+    context = {
+        'page': page
+    }
+    return render(request, 'a_main/pricing.html', context)
 
 
 def careers(request):
     return render(request, 'a_main/blog-single.html')
+
+@login_required
+def bookmark(request, pk):
+    original_car = get_object_or_404(Car, id=pk)
+    bookmark = Bookmark(customer=request.user, bookmark=original_car)
+    bookmark.save()
+    messages.success(request,'Car saved successfully!')
+    return redirect('bookmark_view')
+
+
+def undobookmark(request, pk):
+    bookmarked_car = get_object_or_404(Bookmark, id=pk)
+    if request.user == bookmarked_car.customer:
+        bookmarked_car.delete()
+        messages.success(request,'Save undone successfully!')
+        return redirect('bookmark_view')
+    
+    
+@login_required
+def bookmarkview(request):
+    bookmarks = Bookmark.objects.filter(customer=request.user)
+    bookmarks_count = Bookmark.objects.filter(customer=request.user).count()
+    context = {
+        'bookmarks': bookmarks, 
+        'bookmarks_count': bookmarks_count,
+        }
+    return render(request,'a_main/saved_items.html',context)
+
+@login_required
+def rent_car(request):
+    #car_to_rent = get_object_or_404(Car, pk=pk)
+    car_rent_form = CarRentalForm()
+    if request.method == 'POST':
+        form = CarRentalForm(request.POST)
+        if form.is_valid():
+            rented_car = form.save(commit=False)
+            rented_car.customer = request.user
+            print('Customer,:',rented_car.customer)
+            rented_car.save()
+            print('Rented Car:',rented_car)
+            messages.success(request, 'Car rental request sent!Check your email for details.')
+            return redirect('cars')
+    context = {
+        #'car_to_rent':car_to_rent,
+        'car_rent_form':car_rent_form,
+    }
+    return render(request, 'a_main/car_renting_form.html', context)
+
+

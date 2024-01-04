@@ -1,59 +1,13 @@
-{% extends 'a_main/base.html' %}
+{% extends 'allauth/layouts/base.html' %}
 {% block title_head %} Post Car {% endblock title_head %}
 {% load static %}
 
-{% block layout %}
-<style>
-    body {
-        background-color: rgb(164, 157, 157);
-    }
-    form {
-        max-width: 60rem;
-        margin:5rem auto;
-        width: 100%;
-        padding:2rem;
-        background:rgba(241,240,253);
-        box-shadow: var(--boxShadow);
-        font-size:1.5rem;
-        color:var(--blackColor);
-        border-radius: .8em;
-        box-sizing: border-box;
-    }
-    form p {
-        display: flex;
-        align-items: center;
-        margin-bottom:1rem;
-        justify-content: flex-start;
-    }
-
-    form label {
-       margin-right:6rem;
-    }
-    form h2 {
-        font-size:2.4rem;
-        color:var(--blueColor);
-        padding:1rem 0;
-    }
-    form input {
-        padding:1.2rem;
-        font-size:1.5rem;
-        color:var(--blackColor);
-        width:100%;
-    }
-    form textarea {
-        padding:1.2rem;
-        font-size:1.5rem;
-        color:var(--blackColor);
-        width:100%;
-        resize: vertical;
-    }
-	</style>
-			<div class="container">
-				<form method="POST" enctype="multipart/form-data">
-                    <h2>Post a Car for Hire</h2>
-					{% csrf_token %}
-					{{carpostform.as_p}}
-					<button type="submit" class="button">Post</button>
-				</form>
-			</div>
+{% block content %}
+<form method="POST" enctype="multipart/form-data">
+    <h1>Post a Car for Hire</h1>
+    {% csrf_token %}
+    {{carpostform.as_p}}
+    <button type="submit" class="button">Post</button>
+</form>
+	
 {% endblock %}
