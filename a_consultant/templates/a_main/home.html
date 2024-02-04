@@ -408,7 +408,7 @@
 							<p class="price">${{featured_car.hire_rate_day}} <span>/day</span></p>
 						</div>
 						<div class="home-car-book-btns">
-							<a href="{% url 'rent_car' %}" class="book-now-btn" style="padding:1.2rem 4rem;background-color: var(--blueColor);border-radius:.2rem;color:var(--whiteColor);">Book now</a> 
+							<a href="{% url 'rent_car' featured_car.id %}" class="book-now-btn" style="padding:1.2rem 4rem;background-color: var(--blueColor);border-radius:.2rem;color:var(--whiteColor);">Book now</a> 
 							<a href="{% url 'car-details' featured_car.id %}" class="detail-btn"  style="padding:1.2rem 5rem; background-color: var(--greenColor);border-radius:.2rem;color:var(--whiteColor);">Details</a>
 						</div>
 					</div>

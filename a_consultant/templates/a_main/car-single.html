@@ -167,7 +167,7 @@
 					</div>
 				</div>
 				<div style="display:flex;gap:2rem; justify-content: space-between;align-items: center;flex-wrap:wrap;">
-					<a href="{% url 'rent_car' %}" class="button" >BOOK NOW</a>
+					<a href="{% url 'rent_car' car_to_view.id %}" class="button" >BOOK NOW</a>
 					<a href="{% url 'bookmark' car_to_view.id %}" class="detail-btn"  style="padding:1.2rem 5rem; background-color: var(--greenColor);border-radius:.2rem;color:var(--whiteColor);font-size:1.7rem;">Save</a>
 				</div>
 				

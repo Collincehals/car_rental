@@ -173,13 +173,15 @@ def rent_car(request, pk):
         form = CarRentalForm(request.POST)
         if form.is_valid():
             rented_car = form.save(commit=False)
+            rented_car.name = car_to_rent.name
             rented_car.customer = request.user
+            rented_car.car = car_to_rent
             rented_car.save()
             print('Rented Car:',rented_car)
             messages.success(request, 'Car rental request sent!Check your email for details.')
             return redirect('cars')
     context = {
-        #'car_to_rent':car_to_rent,
+        'car_to_rent':car_to_rent,
         'car_rent_form':car_rent_form,
     }
     return render(request, 'a_main/car_renting_form.html', context)

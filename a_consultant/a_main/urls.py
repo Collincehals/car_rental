@@ -20,5 +20,5 @@ urlpatterns = [
     path('save/car/<pk>/', bookmark, name='bookmark'),
     path('undosave/car/<pk>/', undobookmark, name='delete_bookmark'),
     path('saved/items/', bookmarkview, name='bookmark_view'),
-    path('rent/car/', rent_car, name='rent_car'),
+    path('rent/car/<pk>/', rent_car, name='rent_car'),
 ]

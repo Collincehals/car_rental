@@ -219,35 +219,35 @@ table {
 					</td>
 					
 					<td class="price">
-						<p class="button-rent-overlay"><a class="button" href="{% url 'rent_car' %}">Rent</a></p>
+						<p class="button-rent-overlay"><a class="button" href="{% url 'rent_car' car.id %}">Rent</a></p>
 						<div class="price-rate">
 							<h3>
 								<span class="num"><small class="currency">$</small>{{car.hire_rate_hour}}</span>
 								<span class="per">/per hour</span>
 							</h3>
-							<p class="mobile-rent-button"><a  href="{% url 'rent_car' %}">Rent</a></p>
+							<p class="mobile-rent-button"><a  href="{% url 'rent_car' car.id %}">Rent</a></p>
 						</div>
 					</td>
 					
 					<td class="price">
-						<p class="button-rent-overlay"><a class="button" href="{% url 'rent_car' %}">Rent a car</a></p>
+						<p class="button-rent-overlay"><a class="button" href="{% url 'rent_car' car.id %}">Rent a car</a></p>
 						<div class="price-rate">
 							<h3>
 								<span class="num"><small class="currency">$</small>{{car.hire_rate_day}}</span>
 								<span class="per">/per day</span>
 							</h3>
-							<p class="mobile-rent-button"><a href="{% url 'rent_car' %}">Rent</a></p>
+							<p class="mobile-rent-button"><a href="{% url 'rent_car' car.id %}">Rent</a></p>
 						</div>
 					</td>
 
 					<td class="price">
-						<p class="button-rent-overlay"><a class="button" href="{% url 'rent_car' %}">Rent a car</a></p>
+						<p class="button-rent-overlay"><a class="button" href="{% url 'rent_car' car.id %}">Rent a car</a></p>
 						<div class="price-rate">
 							<h3>
 								<span class="num"><small class="currency">$</small>{{car.lease_rate}}</span>
 								<span class="per">/per month</span>
 							</h3>
-							<p class="mobile-rent-button"><a href="{% url 'rent_car' %}">Rent</a></p>
+							<p class="mobile-rent-button"><a href="{% url 'rent_car' car.id %}">Rent</a></p>
 						</div>
 					</td>
 				</tr>

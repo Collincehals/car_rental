@@ -4,7 +4,10 @@
 
 {% block content %}
 <form method="POST">
-    <h1>Proceed with Renting {{car_to_rent.name}}</h1>
+    <h1>Proceed with Renting <span style="color:darkorange;"><em>{{car_to_rent.name}}</em></span></h1>
+    <div style="max-width:120px;height:80px;width:100%;margin:20px auto;">
+        <img style="width:100%; object-fit: contain;border-radius: 20px;" src="{{car_to_rent.image.url}}" alt="car-to-rent.jpg" />
+    </div>
     {% csrf_token %}
     {{car_rent_form.as_p}}
     <button type="submit" class="button">Confirm</button>
