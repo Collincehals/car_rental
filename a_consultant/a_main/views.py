@@ -173,7 +173,6 @@ def rent_car(request, pk):
         form = CarRentalForm(request.POST)
         if form.is_valid():
             rented_car = form.save(commit=False)
-            rented_car.name = car_to_rent.name
             rented_car.customer = request.user
             rented_car.car = car_to_rent
             rented_car.save()

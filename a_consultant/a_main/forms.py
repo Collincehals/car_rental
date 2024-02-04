@@ -33,7 +33,7 @@ class TripBookingForm(ModelForm):
 class CarRentalForm(ModelForm):
     class Meta:
         model = CarRental
-        exclude = ['customer', 'renting_id','status','car','name', ]
+        exclude = ['customer', 'renting_id','status','car',]
         
         widgets = {
             'rental_start_date': forms.DateInput(attrs={'type': 'date'}),

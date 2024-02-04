@@ -109,7 +109,6 @@ class CarRental(models.Model):
 
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
     car = models.ForeignKey('Car', on_delete=models.CASCADE)
-    name = models.CharField(max_length=100, blank=True, null=True)
     rental_start_date = models.DateField()
     rental_end_date = models.DateField()
     pick_up_time= models.TimeField(max_length=200, blank=False, null=True)
@@ -121,7 +120,7 @@ class CarRental(models.Model):
     renting_id = models.CharField(max_length=200, default = uuid.uuid4, primary_key=True, unique=True, null=False) 
 
     def __str__(self):
-        return f"Rental ID: {self.renting_id} - {self.name} - {self.customer}"   
+        return f"Rental ID: {self.renting_id} - {self.customer} - {self.car}"   
     class Meta:
         ordering = ['-date_ordered']
         
