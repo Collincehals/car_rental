@@ -166,15 +166,14 @@ def bookmarkview(request):
     return render(request,'a_main/saved_items.html',context)
 
 @login_required
-def rent_car(request):
-    #car_to_rent = get_object_or_404(Car, pk=pk)
+def rent_car(request, pk):
+    car_to_rent = get_object_or_404(Car, pk=pk)
     car_rent_form = CarRentalForm()
     if request.method == 'POST':
         form = CarRentalForm(request.POST)
         if form.is_valid():
             rented_car = form.save(commit=False)
             rented_car.customer = request.user
-            print('Customer,:',rented_car.customer)
             rented_car.save()
             print('Rented Car:',rented_car)
             messages.success(request, 'Car rental request sent!Check your email for details.')
