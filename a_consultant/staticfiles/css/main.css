@@ -268,22 +268,10 @@ body {
   margin-top:2rem;
 }
 
-.about-intro-section {
-  position: relative;
-  display: grid;
-  grid-template-columns: 2fr 4fr;
-  position:relative;
-  font-size:1.7rem;
-  background:var(--greenColor);
-  height:35rem;
-}
 
 @media (max-width: 768px) {
 .about-section {
   grid-template-columns:100%;
-}
-.about-intro-section, .services-intro-section {
-  grid-template-columns: 1fr;
 }
 .color-blank-container {
   display:none;
@@ -296,9 +284,6 @@ body {
   font-size: 1.6rem;
   color:var(--whiteColor);
   background-color: var(--greenColor);
-}
-.about-intro-section {
-  height:40rem;
 }
 
 }

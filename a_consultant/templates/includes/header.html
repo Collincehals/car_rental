@@ -234,24 +234,24 @@ html {
     <nav class="nav" id="mobilenav">
       <ul>
         <i class="fa-solid fa-xmark menuclosebtn" ></i>  
-        <li class="nav-item active"><a href="{% url 'home' %}">Home</a></li>
-        <li class="nav-item"><a href="{% url 'about' %}">About</a></li>
-        <li class="nav-item"><a href="{% url 'cars' %}" >Cars</a></li>
+        <li class="nav-item{% if request.path == '/' %} active {% endif %}"><a href="{% url 'home' %}">Home</a></li>
+        <li class="nav-item {% if request.path == '/about/' %} active {% endif %}"><a href="{% url 'about' %}">About</a></li>
+        <li class="nav-item {% if request.path == '/cars/' %} active {% endif %}"><a href="{% url 'cars' %}" >Cars</a></li>
         <li class="nav-item dropdown"><a>Products</a>
           <ul class="dropdown-content">
-            <li class="dropdown-menu"><a href="{% url 'create_car_post' %}">Create Post</a></li>
-            <li class="dropdown-menu"><a href="">Portfolio</a></li>
-            <li class="dropdown-menu"><a href="">Our Service Charter</a></li>
-            <li class="dropdown-menu"><a href="">Our Vision</a></li>
-            <li class="dropdown-menu"><a href="">Our Mission</a></li>
-            <li class="dropdown-menu"><a href="">Core Values</a></li>
+            <li class="dropdown-menu {% if request.path == '/about/' %} active {% endif %}"><a href="{% url 'create_car_post' %}">Create Post</a></li>
+            <li class="dropdown-menu {% if request.path == '/about/' %} active {% endif %}"><a href="{% url 'about' %}">Portfolio</a></li>
+            <li class="dropdown-menu {% if request.path == '/about/' %} active {% endif %}"><a href="{% url 'about' %}">Our Service Charter</a></li>
+            <li class="dropdown-menu {% if request.path == '/about/' %} active {% endif %}"><a href="{% url 'about' %}">Our Vision</a></li>
+            <li class="dropdown-menu {% if request.path == '/about/' %} active {% endif %}"><a href="{% url 'about' %}">Our Mission</a></li>
+            <li class="dropdown-menu {% if request.path == '/about/' %} active {% endif %}"><a href="{% url 'about' %}">Core Values</a></li>
           </ul>
         </li>
-        <li class="nav-item"><a href="{% url 'services' %}" >Services</a></li>
-        <li class="nav-item"><a href="{% url 'pricing' %}">Pricing</a></li>
+        <li class="nav-item {% if request.path == '/services/' %} active {% endif %}"><a href="{% url 'services' %}" >Services</a></li>
+        <li class="nav-item {% if request.path == '/pricing/' %} active {% endif %}"><a href="{% url 'pricing' %}">Pricing</a></li>
         
-        <li class="nav-item"><a href="{% url 'blog' %}" class="nav-link">Blog</a></li>
-        <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+        <li class="nav-item {% if request.path == '/blog/' %} active {% endif %}"><a href="{% url 'blog' %}" class="nav-link">Blog</a></li>
+        <li class="nav-item {% if request.path == '/contact/' %} active {% endif %}"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
         {% if user.is_authenticated %}
         <h4 style="color:darkorange;font-size: 1.7rem;font-weight:600;">{{user|title}}</h4>
         <li class="nav-item"><a href="{% url 'account_logout' %}" class="nav-link">Logout</a></li>

@@ -21,6 +21,15 @@
     margin-bottom:7rem;
     margin-right: -10rem;
   }
+  .about-intro-section {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    position:relative;
+    font-size:1.7rem;
+    background:var(--greenColor);
+    height:35rem;
+  }
   .about-bg3 {
     background-image: url("{% static 'images/bg_3.jpg' %}");
     background-repeat: no-repeat;
@@ -29,6 +38,7 @@
     z-index: 5;
     position: relative;
     margin-left:2rem;
+    clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%);
   }
  .heading-section-wordings {
     position: absolute;
@@ -43,6 +53,7 @@
     font-weight:600;
     padding-bottom: 2rem;
 	}
+
   @media (max-width: 768px) {
     .about-bg2 {
       display:none;
@@ -50,11 +61,17 @@
     .about-bg3 {
       margin-left:0;
     }
+    .about-intro-section, .services-intro-section {
+      grid-template-columns: 1fr;
+    }
     .heading-section-wordings>h2 {
       font-size:2.5rem;
       font-weight:600;
       padding-bottom: 2rem;
     }
+    .about-intro-section {
+    height:40rem;
+  }
   }
 
 </style>
@@ -160,12 +177,7 @@
     font-size:1.6rem;
     color:var(--blueColor);
   }
-  .mySwiper .swiper-button-next, .mySwiper .swiper-button-prev {
-    color:var(--blueColor);
-    font-size: 1.4rem;
-    width:1.6rem;
-    height:1.6rem;
-  }
+
   
 /*Counter styling here */
 .counter-container-row {
@@ -186,10 +198,9 @@
   justify-content: center;
   align-items: center;
   gap:1.5rem;
-  font-size:2rem;
 }
 .counter-items .number {
-  font-size:4.2rem;
+  font-size:3rem;
   color:var(--blueColor);
 }
 .counter-items span {
@@ -228,7 +239,7 @@
         </div>
         <div class="testimonial-row swiper mySwiper">
           <div class="swiper-wrapper">
-              <div class="carousel-item swiper-slide">
+              <div class="swiper-slide">
                 <div class="testimony-wrap">
                   <div class="testimony-img-container">
                     <img src="{% static 'images/person_2.jpg' %}" alt="img-1" class="carousel-img" >
@@ -301,7 +312,7 @@
           <div class="counter-1">
             <div class="block-18">
               <div class="counter-items">
-                <strong class="number" data-number="60">60</strong>
+                <span class="number" data-number="60">60</span>
                 <span>Year <br>Experienced</span>
               </div>
             </div>
@@ -309,7 +320,7 @@
           <div class="counter-2">
             <div class="block-18">
               <div class="counter-items">
-                <strong class="number" data-number="1090">1090</strong>
+                <span class="number" data-number="1090">1090</span>
                 <span>Total <br>Cars</span>
               </div>
             </div>
@@ -317,7 +328,7 @@
           <div class="counter-3">
             <div class="block-18">
               <div class="counter-items">
-                <strong class="number" data-number="2590">2590</strong>
+                <span class="number" data-number="2590">2590</span>
                 <span>Happy <br>Customers</span>
               </div>
             </div>
@@ -325,7 +336,7 @@
           <div class="counter-4">
             <div class="block-18">
               <div class="counter-items">
-                <strong class="number" data-number="67">67</strong>
+                <span class="number" data-number="67">67</span>
                 <span>Total <br>Branches</span>
               </div>
             </div>
