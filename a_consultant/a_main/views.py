@@ -49,23 +49,20 @@ def projects(request):
 
 
 def cars(request, brand=None):
-    if brand:
-        cars = Car.objects.filter(brand__slug = brand)
+    if request.htmx:
+        if brand:
+            cars = Car.objects.filter(brand__slug = brand)
+            paginator = Paginator(cars, 3)
+            page_number = request.GET.get('page')
+            page = paginator.get_page(page_number)
+            return render(request, 'snippets/filtered_cars.html',{'page':page})
     else:
         cars = Car.objects.all()
-    """
-    if request.htmx:
-        if 'lamborghini' in request.GET:
-            cars = Car.objects.filter(brand__slug = 'lamborghini')
-        elif 'landrover' in request.GET:
-            cars = Car.objects.filter(brand__slug = 'landrover')  
-        elif 'audi' in request.GET:
-            cars = Car.objects.filter(brand__slug = 'audi') 
-        elif 'mercedes' in request.GET:
-            cars = Car.objects.filter(brand__slug = 'mercedes')
-        else:
-            cars = Car.objects.all() 
-       """       
+        paginator = Paginator(cars, 3)
+        page_number = request.GET.get('page')
+        page = paginator.get_page(page_number)
+        return render(request, 'snippets/filtered_cars.html',{'page':page})
+    cars = Car.objects.all()
     categories = Brand.objects.all()
     paginator = Paginator(cars, 3)
     page_number = request.GET.get('page')

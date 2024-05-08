@@ -186,11 +186,15 @@
 			</div>
 				<ul class="categories-container">
 					{% for category in categories %}
-					<li><a href="{% url 'category_page' category.slug %}">{{category}}</a></li>
+					<li><a 
+						hx-get="{% url 'category_page' category.slug %}"
+						hx-target = "#cars-container"
+						hx-swap="innerHTML"
+						>{{category}}</a></li>
 					{% endfor %}
 				</ul>
 		
-				<div class="car-container">
+				<div id="cars-container" class="car-container">
 					{% for car in page %}
 					<div class="car-item">
 						<div class="car-image-container">
