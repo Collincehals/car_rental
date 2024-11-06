@@ -30,10 +30,10 @@ ENVIRONMENT = os.getenv('ENVIRONMENT', default='production')
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if ENVIRONMENT == 'development':
-    DEBUG = True
-else:
-    DEBUG = False
+#if ENVIRONMENT == 'development':
+   # DEBUG = True
+#else:
+DEBUG = False
     
 ALLOWED_HOSTS = ['car-rental-xr4f.onrender.com',
                  '127.0.0.1']
